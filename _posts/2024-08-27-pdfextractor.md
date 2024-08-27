@@ -1,14 +1,22 @@
 ---
 layout: post
-title: Find the  right pdf extractor for building your RAG
+title: Find the Rigt PDF Extractor to Enhance Your RAG Workflow
 date: 2024-08-27 00:32:13
-description: this is what included tabs in a post could look like
-tags: formatting code
+description: 
+tags: RAG data
 categories: sample-posts
 tabs: true
 ---
 
-This is how a post with [tabs](https://github.com/Ovski4/jekyll-tabs) looks like. Note that the tabs could be used for different purposes, not only for code.
+Over the past few years, pretrained language models have driven significant advancements across many tasks. However, in practical industrial applications, the primary performance bottleneck for efficient document retrieval often lies not in the embedding model’s capabilities but in the preceding data ingestion pipeline. Indexing a standard PDF document involves several steps, but always starting with the use of PDF parsers or Optical Character Recognition (OCR) systems to extract text from the document's pages.
+
+
+
+Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages.
+
+In the market, a variety of PDF extraction tools are available. Free options like PDFPlumber and PyPDF are popular, while some companies offer paid solutions for more advanced PDF extraction capabilities. Here, I will compare different free PDF extractor tools, highlighting their advantages and disadvantages.
+
+
 
 ## First tabs
 
