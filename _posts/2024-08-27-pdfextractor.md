@@ -13,7 +13,7 @@ Recently, Retrieval-Augmented Generation (RAG) has emerged as a prominent approa
 
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
-When a (machine-generated) PDF contains only text (without figures, tables, etc.), the most straightforward way to extract the information is by using a Python package. There are various PDF extraction tools available on the market. Some useful open-source Python packages, like PDFPlumber and PyPDF, are very handy, while some companies offer paid solutions with more advanced capabilities. In this discussion, I will compare different free PDF extraction tools, highlighting their advantages and disadvantages.
+When a (machine-generated) PDF contains only text (without figures, tables, etc.), the most straightforward way to extract the information is by using a Python package. There are various PDF extraction tools available on the market. Some useful open-source Python packages, like PDFPlumber and PyPDF, are very handy, while some companies offer paid solutions with more advanced capabilities. In this discussion, I will compare different two free PDF extraction packages, highlighting their advantages and disadvantages.
 
 
 
