@@ -13,13 +13,15 @@ Recently, Retrieval-Augmented Generation (RAG) has emerged as a prominent approa
 
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
-When a PDF (not a scanned one) contains only text (without figures, tables, etc.), the most straightforward way to extract the information is by using a Python package. There are various PDF extraction tools available on the market. Some useful open-source Python packages, like PDFPlumber and PyPDF, are very handy, while some companies offer paid solutions with more advanced capabilities. In this discussion, I will compare different free PDF extraction tools, highlighting their advantages and disadvantages.
+When a (machine-generated) PDF contains only text (without figures, tables, etc.), the most straightforward way to extract the information is by using a Python package. There are various PDF extraction tools available on the market. Some useful open-source Python packages, like PDFPlumber and PyPDF, are very handy, while some companies offer paid solutions with more advanced capabilities. In this discussion, I will compare different free PDF extraction tools, highlighting their advantages and disadvantages.
 
 
 
-## First tabs
+## pdfplumber vs pypdf 
 
-To add tabs, use the following syntax:
+pdfplumber is built on pdfminer.six, enabling many customizable functions. This package can extract pages and text while preserving the layout. Additionally, it can identify the coordinates of words, allowing for the extraction of text within specific areas.
+
+On the other hand, pypdf also allows for text extraction while maintaining the layout. You can use visitor functions to control which parts of a page you want to process and extract. However, it does not support extracting the coordinates of words.
 
 {% raw %}
 
