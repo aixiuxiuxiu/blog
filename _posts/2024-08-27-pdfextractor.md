@@ -19,9 +19,9 @@ When a (machine-generated) PDF contains only text (without figures, tables, etc.
 
 ## pdfplumber vs pypdf 
 
-pdfplumber is built on pdfminer.six, enabling many customizable functions. This package can extract pages and text while preserving the layout. Additionally, it can identify the coordinates of words, allowing for the extraction of text within specific areas.
+[pdfplumber](https://github.com/jsvine/pdfplumber) is built on [`pdfminer.six`](https://github.com/goulu/pdfminer), enabling many customizable functions. This package can extract pages and text while preserving the layout. Additionally, it can identify the coordinates of words, allowing for the extraction of text within specific areas.
 
-On the other hand, pypdf also allows for text extraction while maintaining the layout. You can use visitor functions to control which parts of a page you want to process and extract. However, it does not support extracting the coordinates of words.
+On the other hand, [pypdf](https://pypi.org/project/pypdf/) also allows for text extraction while maintaining the layout. You can use visitor functions to control which parts of a page you want to process and extract. However, it does not support extracting the coordinates of words.
 
 {% raw %}
 
