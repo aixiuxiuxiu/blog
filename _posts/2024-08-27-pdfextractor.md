@@ -51,8 +51,6 @@ var_dump('hello');
 
 ```pdfplumber
 
-{% raw %}
-```liquid
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/blog.ipynb' | relative_url %}
 {% capture notebook_exists %}{% file_exists assets/jupyter/blog.ipynb %}{% endcapture %}
@@ -63,8 +61,6 @@ var_dump('hello');
 {% endif %}
 {:/nomarkdown}
 ```
-
-{% endraw %}
 
 
 {% endtab %}
