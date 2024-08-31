@@ -25,7 +25,7 @@ On the other hand, [pypdf](https://pypi.org/project/pypdf/) also allows for text
 
 The following example compares the extraction results of pdfplumber and pypdf using a PDF excerpt from the [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en). The PDF page presents a high level of complexity, with text that is discontinuously arranged and interspersed with numerous footnotes.
 
- <embed src="path/to/your/file.pdf" width="600" height="500" type="application/pdf">
+ <img src="assets/img/pdf_example" width="600" height="500" alt="Description of the image">
 
 
 {% raw %}
@@ -56,27 +56,20 @@ With this you can generate visualizations like:
 
 {% tab log php %}
 
-```php
+```pypdf
 var_dump('hello');
 ```
 
 {% endtab %}
 
-{% tab log js %}
+{% tab log pdfplumber %}
 
-```javascript
+```pdfplumber
 console.log("hello");
 ```
 
 {% endtab %}
 
-{% tab log ruby %}
-
-```javascript
-pputs 'hello'
-```
-
-{% endtab %}
 
 {% endtabs %}
 
