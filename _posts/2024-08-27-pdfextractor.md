@@ -25,7 +25,13 @@ On the other hand, [pypdf](https://pypi.org/project/pypdf/) also allows for text
 
 The following example compares the extraction results of pdfplumber and pypdf using a PDF excerpt from the [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en). The PDF page presents a high level of complexity, with text that is discontinuously arranged and interspersed with numerous footnotes.
 
- <img src="../assets/img/pdf_example.png" width="200" height="100" alt="Description of the image">
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/pdf_example.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+    
+</div>
 
 
 
@@ -53,6 +59,9 @@ console.log("hello");
 {% endtabs %}
 
 ## Connect with RAG Framework 
+
+Then I will show how to link different pdf extraction package with
+the RAG within two prominent framework: Langchain, LLama
 
 {% tabs data-struct %}
 
