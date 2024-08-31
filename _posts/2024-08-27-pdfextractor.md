@@ -25,36 +25,15 @@ On the other hand, [pypdf](https://pypi.org/project/pypdf/) also allows for text
 
 The following example compares the extraction results of pdfplumber and pypdf using a PDF excerpt from the [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en). The PDF page presents a high level of complexity, with text that is discontinuously arranged and interspersed with numerous footnotes.
 
- <img src="assets/img/pdf_example" width="600" height="500" alt="Description of the image">
+ <img src="../assets/img/pdf_example.png" width="200" height="100" alt="Description of the image">
 
 
-{% raw %}
-
-```liquid
-{% tabs group-name %}
-
-{% tab group-name tab-name-1 %}
-
-Content 1
-
-{% endtab %}
-
-{% tab group-name tab-name-2 %}
-
-Content 2
-
-{% endtab %}
-
-{% endtabs %}
-```
-
-{% endraw %}
 
 With this you can generate visualizations like:
 
 {% tabs log %}
 
-{% tab log php %}
+{% tab log pypdf%}
 
 ```pypdf
 var_dump('hello');
