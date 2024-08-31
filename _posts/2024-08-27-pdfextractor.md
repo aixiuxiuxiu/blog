@@ -35,7 +35,7 @@ The following example compares the extraction results of pdfplumber and pypdf us
 
 
 
-pdfplumber can parse various properties of characters, such as page number, text, coordinates, etc. You can use the `.crop()` method to crop a page into a bounding box, `.crop((x0, top, x1, bottom), relative=False, strict=True)`. Here is how I extract text from two boxes: one for the left side and the other for the right side. The x and y coordinate values can be determined using the x0, y0, x1, and y1 values of certain characters. For example, I use the x0 of the word ‘Art’ as the x0 for the right box (and x1 for the left box).
+[pdfplumber](https://github.com/jsvine/pdfplumber)  can parse various properties of characters, such as page number, text, coordinates, etc. You can use the `.crop()` method to crop a page into a bounding box, `.crop((x0, top, x1, bottom), relative=False, strict=True)`. Here is how I extract text from two boxes: one for the left side and the other for the right side. The x and y coordinate values can be determined using the x0, y0, x1, and y1 values of certain characters. For example, I use the x0 of the word ‘Art’ as the x0 for the right box (and x1 for the left box).
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/pdfplumber.ipynb' | relative_url %}
@@ -48,28 +48,8 @@ pdfplumber can parse various properties of characters, such as page number, text
 {:/nomarkdown}
 
 
-{% tabs log %}
+PDFs often present many formatting challenges, making it really hard to extract information appropriately for subsequent tasks. You can see more detail on their website for specific properties. 
 
-{% tab log pypdf%}
-
-```pypdf
-var_dump('hello');
-```
-
-{% endtab %}
-
-{% tab log pdfplumber %}
-
-```pdfplumber
-
-jhjkj
-```
-
-
-{% endtab %}
-
-
-{% endtabs %}
 
 ## Connect with RAG Framework 
 
