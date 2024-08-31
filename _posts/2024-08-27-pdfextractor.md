@@ -35,7 +35,7 @@ The following example compares the extraction results of pdfplumber and pypdf us
 
 
 
-With this you can generate visualizations like:
+Pdfplumber can parse various properties of characters, such as page number, text, coordinates, etc. You can use .crop to crop the page into a bounding box, which should be expressed as a 4-tuple with the values (x0, top, x1, bottom). Here is how I extract text from two boxes: one for the left and the other for the right.
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/pdfplumber.ipynb' | relative_url %}
