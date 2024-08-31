@@ -37,6 +37,17 @@ The following example compares the extraction results of pdfplumber and pypdf us
 
 With this you can generate visualizations like:
 
+{::nomarkdown}
+{% assign jupyter_path = 'assets/jupyter/blog.ipynb' | relative_url %}
+{% capture notebook_exists %}{% file_exists assets/jupyter/blog.ipynb %}{% endcapture %}
+{% if notebook_exists == 'true' %}
+  {% jupyter_notebook jupyter_path %}
+{% else %}
+  <p>Sorry, the notebook you are looking for does not exist.</p>
+{% endif %}
+{:/nomarkdown}
+
+
 {% tabs log %}
 
 {% tab log pypdf%}
@@ -51,15 +62,7 @@ var_dump('hello');
 
 ```pdfplumber
 
-{::nomarkdown}
-{% assign jupyter_path = 'assets/jupyter/blog.ipynb' | relative_url %}
-{% capture notebook_exists %}{% file_exists assets/jupyter/blog.ipynb %}{% endcapture %}
-{% if notebook_exists == 'true' %}
-  {% jupyter_notebook jupyter_path %}
-{% else %}
-  <p>Sorry, the notebook you are looking for does not exist.</p>
-{% endif %}
-{:/nomarkdown}
+jhjkj
 ```
 
 
