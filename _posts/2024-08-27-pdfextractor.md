@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Find the Right PDF Extractor for Building RAG
+title: Find the Right and FREE PDF Extractor for Building RAG
 date: 2024-08-27 00:32:13
 description: 
 tags: RAG data
@@ -13,7 +13,7 @@ Recently, Retrieval-Augmented Generation (RAG) has emerged as a prominent approa
 
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
-When a (machine-generated) PDF contains mostly text, there are various PDF extraction tools available on the market. Some companies offer paid solutions with advanced capabilities, while several open-source Python packages, such as PDFPlumber and PyPDF, are also very useful. In this discussion, I will compare two different free PDF extraction Python packages, highlighting their advantages and disadvantages.
+When a (machine-generated) PDF contains mostly text, there are various PDF extraction tools available on the market. Some companies offer paid solutions with advanced capabilities, while several open-source Python packages, such as `PDFPlumber` and `PyPDF`, are also very useful. In this discussion, I will compare two different free PDF extraction Python packages, highlighting their advantages and disadvantages.
 
 
 ## pdfplumber vs pypdf 
@@ -47,39 +47,14 @@ The following example compares the extraction results of pdfplumber and pypdf us
 {:/nomarkdown}
 
 
-PDFs often present many formatting challenges, making it really hard to extract information appropriately for subsequent tasks. You can see more detail on their website for specific properties. 
 
 
-## Connect with RAG Framework 
 
-Then I will show how to link different pdf extraction package with
-the RAG within two prominent framework: Langchain, LLama
+## Evaluation
 
-{% tabs data-struct %}
+In the realm of building RAG frameworks, `LLAMAIndex` provides a `llama_parse` API. This API allows `LLAMAIndex` to efficiently parse and represent files for retrieval. However, it does not allow integration with the open-source PDF parser packages mentioned above.
 
-{% tab data-struct langchain %}
-
-```langchain
-hello:
-  - "whatsup"
-  - "hi"
-```
-
-{% endtab %}
-
-{% tab data-struct llama %}
-
-```Llama
-{
-  "hello": ["whatsup", "hi"]
-}
-```
-
-{% endtab %}
-
-{% endtabs %}
-
-## Benchemarking pdf extractors for RAG
+`LangChain`  integrates with various PDF parsers, such as PyPDF and PDFPlumber. In this section, I will compare the retrieval results using different PDF extraction methods within the LangChain framework.
 
 {% tabs something-else %}
 
