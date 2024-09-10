@@ -105,6 +105,8 @@ Evaluation of retrieval
 </div>
 
 
+Please note that this article focuses on PDFs containing only text.  Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages.
+
 
 
 
