@@ -8,7 +8,7 @@ categories: sample-posts
 tabs: true
 ---
 
-Recently, Retrieval-Augmented Generation (RAG) has emerged as a prominent approach that leverages large language models for building applications. However, in practical industrial settings, the primary bottleneck for the performance of RAG, particularly in terms of document retrieval, often lies not in the embedding model’s capabilities, but in the prior data ingestion pipeline. Building a RAG system begins with indexing documents, which are often in PDF format. This process typically starts with the use of PDF parsers to extract text from the document's pages.
+Recently, Retrieval-Augmented Generation (RAG) has emerged as a prominent approach that leverages large language models for building advanced applications. However, in practical industrial settings, the primary bottleneck affecting RAG performance—especially in document retrieval—often lies not in the capabilities of the embedding model, but in the data ingestion pipeline. The process of building a RAG system begins with indexing documents, many of which are in PDF format. This typically involves using PDF parsers to extract text from the document’s pages, a crucial step that significantly impacts the overall retrieval accuracy.
 
 Extracting text from PDFs are challenging in many aspects (can also read [this](https://pypdf.readthedocs.io/en/stable/user/extract-text.html)):
 * **Complex and variable structures**: PDFs are designed for visual presentation, not structured text extraction, leading to fragmented or misaligned text.
@@ -20,13 +20,20 @@ Extracting text from PDFs are challenging in many aspects (can also read [this](
 
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
-There are various PDF extraction tools available on the market. Some companies offer paid solutions with advanced capabilities, while several open-source Python packages arealso very useful, such as `PyPDF`, `PDFPlumber`,etc.  In this discussion, I will compare effects of PDF extraction on the retreival performance. 
+
+There are various  PDF extraction tools available on the market. Some companies provide paid solutions with advanced features, while several open-source Python packages, such as `PyPDF` and `PDFPlumber`, are also highly effective. In this discussion, I will compare the impact of different PDF extraction methods on retrieval performance.
+
+
+
+
+
+
 
 
 ## PDF extraction
 
 
-The following example compares the extraction results of pdfplumber and pypdf using a PDF excerpt from the [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en). The PDF page presents a high level of complexity, with text that is discontinuously arranged and interspersed with numerous footnotes.
+The following example is a PDF excerpt from the [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en). The PDF page presents a high level of complexity, with text that is discontinuously arranged and interspersed with numerous footnotes.
 
 
 <div class="row mt-3">
@@ -36,8 +43,13 @@ The following example compares the extraction results of pdfplumber and pypdf us
     
 </div>
 
+Here I use [`pdfplumber`](https://github.com/jsvine/pdfplumber), a library built on top of [`pdfminer.six`](https://github.com/goulu/pdfminer), that offers a wide range of customizable features for extracting text from PDFs. This package allows the extraction of pages and text while preserving the original layout. Additionally, it can parse various character properties, such as page number, text, and coordinates. For instance, the `.crop()` method can be used to crop a page into a specific bounding box: `.crop((x0, top, x1, bottom), relative=False, strict=True`.
 
-[`pdfplumber`](https://github.com/jsvine/pdfplumber) is built on [`pdfminer.six`](https://github.com/goulu/pdfminer), enabling many customizable functions. This package can extract pages and text while preserving the layout. It can parse various properties of characters, such as page number, text, coordinates, etc. You can use the `.crop()` method to crop a page into a bounding box, `.crop((x0, top, x1, bottom), relative=False, strict=True)`. Here is how I extract text from two boxes: one for the left side and the other for the right side. The x and y coordinate values can be determined using the x0, y0, x1, and y1 values of certain characters. For example, I use the x0 of the word ‘Art’ as the x0 for the right box (and x1 for the left box).
+When I extract text directly from this area, the raw extraction results look unstructured.
+
+In another approach, I extract text from two distinct areas: one for the left side and one for the right side of the page.  I use the [x0] of the word "Art" as the [x0] for the right box and the same value as the [x1] for the left box. This makes the extracted sequences more logical.
+
+
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/pdfplumber.ipynb' | relative_url %}
@@ -49,12 +61,12 @@ The following example compares the extraction results of pdfplumber and pypdf us
 {% endif %}
 {:/nomarkdown}
 
-if we use pdfplumber directly without processing, the results looks like
+
 
 
 ## Evaluation
 
-I built two data loaders: one called `Custom PDFLoader`, which uses `pdfplumber` to combine discontinuous chunks into continuous sequences, and another called `PDFLoader`, which extracts the sequences directly using `pdfplumber` without additional postprocessing.
+I built two data loaders: one called   `PDFLoader`, which extracts the sequences directly using `pdfplumber` without additional postprocessing,  and the other called `Custom PDFLoader`, which uses `pdfplumber` to combine discontinuous chunks into continuous sequences,
 
 Here, I will use the `RetrieverEvaluator` module provided in `LLAMAIndex` to evaluate retrieval quality by comparing these two methods of PDF extraction: `Custom PDFLoader` and `PDFLoader`. I will use a `top-2 retriever` for this evaluation.
 
