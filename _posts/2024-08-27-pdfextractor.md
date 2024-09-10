@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Improved PDF extraction boosts RAG performance
+title: Can Enhanced PDF Extraction Drive Better RAG Performance?
 date: 2024-08-27 00:32:13
 description: 
 tags: RAG Evaluation
@@ -43,11 +43,11 @@ The following example is a PDF excerpt from the [Swiss Civil Code](https://www.f
     
 </div>
 
-Here I use [`pdfplumber`](https://github.com/jsvine/pdfplumber), a library built on top of [`pdfminer.six`](https://github.com/goulu/pdfminer), that offers a wide range of customizable features for extracting text from PDFs. This package allows the extraction of pages and text while preserving the original layout. Additionally, it can parse various character properties, such as page number, text, and coordinates. For instance, the `.crop()` method can be used to crop a page into a specific bounding box: `.crop((x0, top, x1, bottom), relative=False, strict=True`.
+Here I use [`pdfplumber`](https://github.com/jsvine/pdfplumber), a library built on top of [`pdfminer.six`](https://github.com/goulu/pdfminer), that offers a wide range of customizable features for extracting text from PDFs. This package allows the extraction of pages and text while preserving the original layout. Additionally, it can parse various character properties, such as page number, text, and coordinates. For instance, the `.crop()` method can be used to crop a page into a specific bounding box: `.crop((x0, top, x1, bottom), relative=False, strict=True)`.
 
 When I extract text directly from this area, the raw extraction results look unstructured.
 
-In another approach, I extract text from two distinct areas: one for the left side and one for the right side of the page.  I use the [x0] of the word "Art" as the [x0] for the right box and the same value as the [x1] for the left box. This makes the extracted sequences more logical.
+In another approach, I extract text from two distinct areas: one for the left side and one for the right side of the page.  I use the **x0** of the word **Art** as the **x0** for the right box and the same value as the **x1** for the left box. This makes the extracted sequences more logical.
 
 
 
