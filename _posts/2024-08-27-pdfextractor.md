@@ -52,7 +52,10 @@ The following example compares the extraction results of pdfplumber and pypdf us
 
 ## Evaluation
 
-Here, I will use the `RetrieverEvaluator` module provided within `LLAMAIndex` to evaluate the retrieval quality by comparing two different methods of PDF extraction.
+I built two data loaders: one called `Custom PDFLoader`, which uses `pdfplumber` to combine discontinuous chunks into continuous sequences, and another called `PyPDF Loader`, which extracts the sequences directly using `PyPDF` without additional postprocessing.
+
+Here, I will use the `RetrieverEvaluator` module provided in `LLAMAIndex` to evaluate retrieval quality by comparing these two methods of PDF extraction: `Custom PDFLoader` and `PyPDF Loader`. I will use a `top-2 retriever` for this evaluation.
+
 
 * First, I used the `generate_question_context_pairs` function to auto-generate a set of (question, context) pairs over the entire PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en), which contains about 350 pages. I generated 2 questions from each context chunk, resulting in a total number of questions.
 * Then, I ran the RetrieverEvaluator on the evaluation dataset we generated, using the evaluation metrics provided.
