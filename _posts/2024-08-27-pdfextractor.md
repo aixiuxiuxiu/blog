@@ -3,7 +3,7 @@ layout: post
 title: Find the Right PDF Extractor for Building RAG
 date: 2024-08-27 00:32:13
 description: 
-tags: RAG data
+tags: RAG Evaluation
 categories: sample-posts
 tabs: true
 ---
@@ -76,21 +76,3 @@ Here, I will use the `RetrieverEvaluator` module provided within `LLAMAIndex` to
 
 
 
-{% tabs something-else %}
-
-{% tab something-else text %}
-
-
-
-{% endtab %}
-
-{% tab something-else quote %}
-
-> A quote
-
-{% endtab %}
-
-{% tab something-else list %}
-
-
-{% endtabs %}
