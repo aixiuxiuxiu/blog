@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Find the Right and FREE PDF Extractor for Building RAG
+title: Find the Right PDF Extractor for Building RAG
 date: 2024-08-27 00:32:13
 description: 
 tags: RAG data
@@ -60,7 +60,7 @@ In the realm of building RAG frameworks, `LLAMAIndex` provides a `llama_parse` A
 
 {% tab something-else text %}
 
-Regular text
+
 
 {% endtab %}
 
@@ -72,13 +72,5 @@ Regular text
 
 {% tab something-else list %}
 
-Hipster list
-
-- brunch
-- fixie
-- raybans
-- messenger bag
-
-{% endtab %}
 
 {% endtabs %}
