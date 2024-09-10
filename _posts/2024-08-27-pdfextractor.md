@@ -64,7 +64,7 @@ Here, I will use the `RetrieverEvaluator` module provided within `LLAMAIndex` to
   * AP: the average of precision values at the ranks where relevant documents are retrieved.
   * NDCG: the quality of a ranking based on the positions of relevant documents
 
-
+The results demonstrate a clear improvement in retrieval performance of approximately 5% when using the customized PDF data loader
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -72,6 +72,10 @@ Here, I will use the `RetrieverEvaluator` module provided within `LLAMAIndex` to
     </div>
     
 </div>
+<div class="caption">
+Evaluation of retrieval 
+</div>
+
 
 
 
