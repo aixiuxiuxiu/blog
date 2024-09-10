@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Can Enhanced PDF Extraction Drive Better RAG Performance?
+title: Optimizing PDF Extraction for Building a Robust RAG
 date: 2024-08-27 00:32:13
 description: 
 tags: RAG Evaluation
@@ -21,7 +21,7 @@ Extracting text from PDFs are challenging in many aspects (can also read [this](
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
 
-There are various  PDF extraction tools available on the market. Some companies provide paid solutions with advanced features, while several open-source Python packages, such as `PyPDF` and `PDFPlumber`, are also highly effective. In this discussion, I will compare the impact of different PDF extraction methods on retrieval performance.
+There are various  PDF extraction tools available on the market. Some companies provide paid solutions with advanced features, while several open-source Python packages, such as `PyPDF` and `PDFPlumber`, are also very handy. In this discussion, I will compare the impact of different PDF extraction methods on retrieval performance.
 
 
 
