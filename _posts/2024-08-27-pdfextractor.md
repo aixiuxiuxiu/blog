@@ -58,7 +58,7 @@ When I extract text directly from this area, the raw extraction results look uns
 {:/nomarkdown}
 
 
-In another approach, I extract text from two distinct areas: one for the left side and one for the right side of the page.  I use the `x0` of the word **Art** as the `x0` for the right box and the same value as the `x1` for the left box. This makes the extracted sequences more logical.
+In another approach, I extract text from two distinct boxes: one for the left side and one for the right side of the page.  I use the `x0` of the word **Art** as the `x0` for the right box and the same value as the `x1` for the left box. This makes the extracted sequences more logical.
 
 
 
@@ -104,8 +104,10 @@ The results demonstrate a clear improvement in retrieval performance of approxim
 Evaluation of retrieval 
 </div>
 
+This experiment highlights that optimizing PDF extraction is crucial and can be just as important as improving embedding models. Please note that this article focuses on PDFs containing only text. If your PDF contains more complex elements, such as images or tables, alternative methods may need to be considered. Recently, the model [ColPali](https://arxiv.org/html/2407.01449v2) has gained significant attention for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging modern Vision-Language Models can generate high-quality, contextualized embeddings directly from images of document pages.
 
-Please note that this article focuses on PDFs containing only text.  Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages.
+
+
 
 
 
