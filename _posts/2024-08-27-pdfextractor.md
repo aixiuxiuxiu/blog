@@ -52,9 +52,29 @@ The following example compares the extraction results of pdfplumber and pypdf us
 
 ## Evaluation
 
-In the realm of building RAG frameworks, `LLAMAIndex` provides a `llama_parse` API. This API allows `LLAMAIndex` to efficiently parse and represent files for retrieval. However, it does not allow integration with the open-source PDF parser packages mentioned above.
+Here, I will use the `RetrieverEvaluator` module provided within `LLAMAIndex` to evaluate the retrieval quality by comparing two different methods of PDF extraction.
 
-`LangChain`  integrates with various PDF parsers, such as PyPDF and PDFPlumber. In this section, I will compare the retrieval results using different PDF extraction methods within the LangChain framework.
+* First, I used the `generate_question_context_pairs` function to auto-generate a set of (question, context) pairs over the entire PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en), which contains about 350 pages. I generated 2 questions from each context chunk, resulting in a total number of questions.
+* Then, I ran the RetrieverEvaluator on the evaluation dataset we generated, using the evaluation metrics provided.
+
+  * hit-rate: the correct answer is present in the top k retrieved results
+  * MRR: the reciprocal of the rank at which the first relevant result appears.
+  * Precision:  the fraction of relevant documents retrieved out of the total number of documents retrieved.
+  * Recall:  the fraction of relevant documents that were retrieved out of the total number of relevant documents available.
+  * AP: the average of precision values at the ranks where relevant documents are retrieved.
+  * NDCG: the quality of a ranking based on the positions of relevant documents
+
+
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/result.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
+    
+</div>
+
+
+
 
 {% tabs something-else %}
 
