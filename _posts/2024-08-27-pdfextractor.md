@@ -8,19 +8,23 @@ categories: sample-posts
 tabs: true
 ---
 
-Recently, Retrieval-Augmented Generation (RAG) has emerged as a prominent approach that leverages large language models for building applications. However, in practical industrial settings, the primary bottleneck for the performance of RAG, particularly in terms of document retrieval, often lies not in the embedding model’s capabilities, but in the prior data ingestion pipeline. Building a RAG system begins with indexing documents, which are often in PDF format. This process typically starts with the use of PDF parsers or Optical Character Recognition (OCR) systems to extract text from the document's pages.
+Recently, Retrieval-Augmented Generation (RAG) has emerged as a prominent approach that leverages large language models for building applications. However, in practical industrial settings, the primary bottleneck for the performance of RAG, particularly in terms of document retrieval, often lies not in the embedding model’s capabilities, but in the prior data ingestion pipeline. Building a RAG system begins with indexing documents, which are often in PDF format. This process typically starts with the use of PDF parsers to extract text from the document's pages.
+
+Extracting text from PDFs are challenging in many aspects (can also read [this](https://pypdf.readthedocs.io/en/stable/user/extract-text.html)):
+* **Complex and variable structures**: PDFs are designed for visual presentation, not structured text extraction, leading to fragmented or misaligned text.
+* **Layout complexity**: PDFs often contain multi-column formats, tables, and embedded images, making it difficult to maintain a logical reading order.
+* **Inconsistent text encoding**: Different fonts, character encodings, or special symbols can lead to extraction errors, such as missing or garbled text.
+* **Discontinuous text chunks**: Text might be broken into fragments that need to be reassembled into meaningful sequences.
+* **Absence of metadata**: Many PDFs lack structured metadata, which complicates the task of determining the document's organization and hierarchy.
 
 
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
-When a (machine-generated) PDF contains mostly text, there are various PDF extraction tools available on the market. Some companies offer paid solutions with advanced capabilities, while several open-source Python packages, such as `PDFPlumber` and `PyPDF`, are also very useful. In this discussion, I will compare two different free PDF extraction Python packages, highlighting their advantages and disadvantages.
+There are various PDF extraction tools available on the market. Some companies offer paid solutions with advanced capabilities, while several open-source Python packages, such as `PDFPlumber` and `PyPDF`, are also very useful. In this discussion, I will compare two different free PDF extraction Python packages, highlighting their advantages and disadvantages.
 
 
 ## pdfplumber vs pypdf 
 
-[`pdfplumber`](https://github.com/jsvine/pdfplumber) is built on [`pdfminer.six`](https://github.com/goulu/pdfminer), enabling many customizable functions. This package can extract pages and text while preserving the layout. Additionally, it can identify the coordinates of words, allowing for the extraction of text within specific areas.
-
-On the other hand, [`pypdf`](https://pypi.org/project/pypdf/) also allows for text extraction while maintaining the layout. You can use `visitor` functions to control which parts of a page you want to process and extract. However, it does not support extracting the coordinates of words.
 
 The following example compares the extraction results of pdfplumber and pypdf using a PDF excerpt from the [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en). The PDF page presents a high level of complexity, with text that is discontinuously arranged and interspersed with numerous footnotes.
 
@@ -33,8 +37,7 @@ The following example compares the extraction results of pdfplumber and pypdf us
 </div>
 
 
-
-`pdfplumber`  can parse various properties of characters, such as page number, text, coordinates, etc. You can use the `.crop()` method to crop a page into a bounding box, `.crop((x0, top, x1, bottom), relative=False, strict=True)`. Here is how I extract text from two boxes: one for the left side and the other for the right side. The x and y coordinate values can be determined using the x0, y0, x1, and y1 values of certain characters. For example, I use the x0 of the word ‘Art’ as the x0 for the right box (and x1 for the left box).
+[`pdfplumber`](https://github.com/jsvine/pdfplumber) is built on [`pdfminer.six`](https://github.com/goulu/pdfminer), enabling many customizable functions. This package can extract pages and text while preserving the layout. It can parse various properties of characters, such as page number, text, coordinates, etc. You can use the `.crop()` method to crop a page into a bounding box, `.crop((x0, top, x1, bottom), relative=False, strict=True)`. Here is how I extract text from two boxes: one for the left side and the other for the right side. The x and y coordinate values can be determined using the x0, y0, x1, and y1 values of certain characters. For example, I use the x0 of the word ‘Art’ as the x0 for the right box (and x1 for the left box).
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/pdfplumber.ipynb' | relative_url %}
@@ -47,7 +50,7 @@ The following example compares the extraction results of pdfplumber and pypdf us
 {:/nomarkdown}
 
 
-
+On the other hand, [`pypdf`](https://pypi.org/project/pypdf/) also allows for text extraction while maintaining the layout. You can use `visitor` functions to control which parts of a page you want to process and extract. However, it does not support extracting the coordinates of words.
 
 
 ## Evaluation
