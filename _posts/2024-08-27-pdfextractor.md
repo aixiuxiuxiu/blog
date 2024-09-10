@@ -20,10 +20,10 @@ Extracting text from PDFs are challenging in many aspects (can also read [this](
 
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
-There are various PDF extraction tools available on the market. Some companies offer paid solutions with advanced capabilities, while several open-source Python packages, such as `PDFPlumber` and `PyPDF`, are also very useful. In this discussion, I will compare two different free PDF extraction Python packages, highlighting their advantages and disadvantages.
+There are various PDF extraction tools available on the market. Some companies offer paid solutions with advanced capabilities, while several open-source Python packages arealso very useful, such as `PyPDF`, `PDFPlumber`,etc.  In this discussion, I will compare effects of PDF extraction on the retreival performance. 
 
 
-## pdfplumber vs pypdf 
+## PDF extraction
 
 
 The following example compares the extraction results of pdfplumber and pypdf using a PDF excerpt from the [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en). The PDF page presents a high level of complexity, with text that is discontinuously arranged and interspersed with numerous footnotes.
@@ -49,15 +49,14 @@ The following example compares the extraction results of pdfplumber and pypdf us
 {% endif %}
 {:/nomarkdown}
 
-
-On the other hand, [`pypdf`](https://pypi.org/project/pypdf/) also allows for text extraction while maintaining the layout. You can use `visitor` functions to control which parts of a page you want to process and extract. However, it does not support extracting the coordinates of words.
+if we use pdfplumber directly without processing, the results looks like
 
 
 ## Evaluation
 
-I built two data loaders: one called `Custom PDFLoader`, which uses `pdfplumber` to combine discontinuous chunks into continuous sequences, and another called `PyPDF Loader`, which extracts the sequences directly using `PyPDF` without additional postprocessing.
+I built two data loaders: one called `Custom PDFLoader`, which uses `pdfplumber` to combine discontinuous chunks into continuous sequences, and another called `PDFLoader`, which extracts the sequences directly using `pdfplumber` without additional postprocessing.
 
-Here, I will use the `RetrieverEvaluator` module provided in `LLAMAIndex` to evaluate retrieval quality by comparing these two methods of PDF extraction: `Custom PDFLoader` and `PyPDF Loader`. I will use a `top-2 retriever` for this evaluation.
+Here, I will use the `RetrieverEvaluator` module provided in `LLAMAIndex` to evaluate retrieval quality by comparing these two methods of PDF extraction: `Custom PDFLoader` and `PDFLoader`. I will use a `top-2 retriever` for this evaluation.
 
 
 * First, I used the `generate_question_context_pairs` function to auto-generate a set of (question, context) pairs over the entire PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en), which contains about 350 pages. I generated 2 questions from each context chunk, resulting in a total number of questions.
