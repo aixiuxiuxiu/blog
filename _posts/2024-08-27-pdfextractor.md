@@ -15,7 +15,7 @@ Extracting text from PDFs are challenging in many aspects (can also read [this](
 * **Layout complexity**: PDFs often contain multi-column formats, tables, and embedded images, making it difficult to maintain a logical reading order.
 * **Inconsistent text encoding**: Different fonts, character encodings, or special symbols can lead to extraction errors, such as missing or garbled text.
 * **Discontinuous text chunks**: Text might be broken into fragments that need to be reassembled into meaningful sequences.
-* **Absence of metadata**: Many PDFs lack structured metadata, which complicates the task of determining the document's organization and hierarchy.
+
 
 
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
