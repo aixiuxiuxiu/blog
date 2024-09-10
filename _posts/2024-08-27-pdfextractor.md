@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Find the Right PDF Extractor for Building RAG
+title: Improved PDF extraction boosts RAG performance
 date: 2024-08-27 00:32:13
 description: 
 tags: RAG Evaluation
@@ -66,7 +66,7 @@ In another approach, I extract text from two distinct areas: one for the left si
 
 ## Evaluation
 
-I built two data loaders: one called   `PDFLoader`, which extracts the sequences directly using `pdfplumber` without additional postprocessing,  and the other called `Custom PDFLoader`, which uses `pdfplumber` to combine discontinuous chunks into continuous sequences,
+I built two data loaders: one called   `PDFLoader`, which extracts the sequences directly using `pdfplumber` without additional postprocessing,  and the other called `Custom PDFLoader`, which uses `pdfplumber` to combine discontinuous chunks into continuous sequences. You can found the whole code [here]()
 
 Here, I will use the `RetrieverEvaluator` module provided in `LLAMAIndex` to evaluate retrieval quality by comparing these two methods of PDF extraction: `Custom PDFLoader` and `PDFLoader`. I will use a `top-2 retriever` for this evaluation.
 
