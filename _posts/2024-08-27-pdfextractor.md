@@ -45,7 +45,18 @@ The following example is a PDF excerpt from the [Swiss Civil Code](https://www.f
 
 Here I use [`pdfplumber`](https://github.com/jsvine/pdfplumber), a library built on top of [`pdfminer.six`](https://github.com/goulu/pdfminer), that offers a wide range of customizable features for extracting text from PDFs. This package allows the extraction of pages and text while preserving the original layout. Additionally, it can parse various character properties, such as page number, text, and coordinates. For instance, the `.crop()` method can be used to crop a page into a specific bounding box: `.crop((x0, top, x1, bottom), relative=False, strict=True)`.
 
-When I extract text directly from this area, the raw extraction results look unstructured.
+When I extract text directly from this area, the raw extraction results look unstructured and illogical.
+
+{::nomarkdown}
+{% assign jupyter_path = 'assets/jupyter/pdfplumber_old.ipynb' | relative_url %}
+{% capture notebook_exists %}{% file_exists assets/jupyter/pdfplumber_old.ipynb %}{% endcapture %}
+{% if notebook_exists == 'true' %}
+  {% jupyter_notebook jupyter_path %}
+{% else %}
+  <p>Sorry, the notebook you are looking for does not exist.</p>
+{% endif %}
+{:/nomarkdown}
+
 
 In another approach, I extract text from two distinct areas: one for the left side and one for the right side of the page.  I use the **x0** of the word **Art** as the **x0** for the right box and the same value as the **x1** for the left box. This makes the extracted sequences more logical.
 
@@ -53,7 +64,7 @@ In another approach, I extract text from two distinct areas: one for the left si
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/pdfplumber.ipynb' | relative_url %}
-{% capture notebook_exists %}{% file_exists assets/jupyter/blog.ipynb %}{% endcapture %}
+{% capture notebook_exists %}{% file_exists assets/jupyter/pdfplumber_old.ipynb %}{% endcapture %}
 {% if notebook_exists == 'true' %}
   {% jupyter_notebook jupyter_path %}
 {% else %}
