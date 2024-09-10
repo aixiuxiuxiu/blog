@@ -21,7 +21,7 @@ Extracting text from PDFs are challenging in many aspects (can also read [this](
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
 
-There are various  PDF extraction tools available on the market. Some companies provide paid solutions with advanced features, while several open-source Python packages, such as `PyPDF` and `PDFPlumber`, are also very handy. In this discussion, I will compare the impact of different PDF extraction methods on retrieval performance.
+There are various  PDF extraction tools available on the market. Some companies provide paid solutions with advanced features, while there also exists several open-source Python packages, such as `PyPDF`, `PDFPlumber`, etc. In this discussion, I will compare the impact of different PDF extraction methods on retrieval performance.
 
 
 
@@ -45,7 +45,7 @@ The following example is a PDF excerpt from the [Swiss Civil Code](https://www.f
 
 Here I use [`pdfplumber`](https://github.com/jsvine/pdfplumber), a library built on top of [`pdfminer.six`](https://github.com/goulu/pdfminer), that offers a wide range of customizable features for extracting text from PDFs. This package allows the extraction of pages and text while preserving the original layout. Additionally, it can parse various character properties, such as page number, text, and coordinates. For instance, the `.crop()` method can be used to crop a page into a specific bounding box: `.crop((x0, top, x1, bottom), relative=False, strict=True)`.
 
-When I extract text directly from this area, the raw extraction results look unstructured and illogical.
+When I extract text directly from this area, the raw extraction results look unstructured and illogical. It reads the line horizontally, even though the line is split into two blocks.
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/pdfplumber_old.ipynb' | relative_url %}
@@ -58,7 +58,7 @@ When I extract text directly from this area, the raw extraction results look uns
 {:/nomarkdown}
 
 
-In another approach, I extract text from two distinct areas: one for the left side and one for the right side of the page.  I use the **x0** of the word **Art** as the **x0** for the right box and the same value as the **x1** for the left box. This makes the extracted sequences more logical.
+In another approach, I extract text from two distinct areas: one for the left side and one for the right side of the page.  I use the `x0` of the word **Art** as the `x0` for the right box and the same value as the `x1` for the left box. This makes the extracted sequences more logical.
 
 
 
@@ -77,7 +77,7 @@ In another approach, I extract text from two distinct areas: one for the left si
 
 ## Evaluation
 
-I built two data loaders: one called   `PDFLoader`, which extracts the sequences directly using `pdfplumber` without additional postprocessing,  and the other called `Custom PDFLoader`, which uses `pdfplumber` to combine discontinuous chunks into continuous sequences. You can found the whole code [here]()
+I built two data loaders: one called   `PDFLoader`, which extracts the sequences directly using `pdfplumber` without additional postprocessing,  and the other called `Custom PDFLoader`, which uses `pdfplumber` to combine discontinuous chunks into continuous sequences, as illustrated above. You can find the code on [Github](https://github.com/aixiuxiuxiu/pdf-extraction-blog/tree/main).
 
 Here, I will use the `RetrieverEvaluator` module provided in `LLAMAIndex` to evaluate retrieval quality by comparing these two methods of PDF extraction: `Custom PDFLoader` and `PDFLoader`. I will use a `top-2 retriever` for this evaluation.
 
