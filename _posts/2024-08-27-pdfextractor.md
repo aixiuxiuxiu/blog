@@ -78,12 +78,15 @@ Illustraction of Custom PDFLoader result
 
 ## Evaluation
 
+This section evaluates retrieval quality by comparing the two methods of PDF extraction: `Custom PDFLoader` and `PDFLoader`, using the `RetrieverEvaluator` module provided in `LLAMAIndex`.
 
-Here, I will use the `RetrieverEvaluator` module provided in `LLAMAIndex` to evaluate retrieval quality by comparing these two methods of PDF extraction: `Custom PDFLoader` and `PDFLoader`. I will use a `top-2 retriever` for this evaluation.
 
 
-* First, I used the `generate_question_context_pairs` function to auto-generate a set of (question, context) pairs over the entire PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en), which contains about 350 pages. I generated 2 questions from each context chunk, resulting in a total number of questions.
-* Then, I ran the RetrieverEvaluator on the evaluation dataset we generated, using the evaluation metrics provided.
+* First, I split the entire PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en) (about 350 pages), into small chunks of 1024 characters, with a chunk overlap of 200.
+
+* Second, I created the evaluation dataset using the `generate_question_context_pairs` function. This function can automatically generate a set of (question, context) pairs using LLMs. I generated two questions from each context chunk with GPT-4-mini, resulting in a total number of questions.
+* I built a retriever using the built-in `VectorStoreIndex` function in `LLAMAIndex`, and performed retrieval using the top-k similarity method.
+* Finally, I ran the `RetrieverEvaluator` on the evaluation dataset we generated, using the provided evaluation metrics.
 
   * hit-rate: the correct answer is present in the top k retrieved results
   * MRR: the reciprocal of the rank at which the first relevant result appears.
@@ -92,7 +95,7 @@ Here, I will use the `RetrieverEvaluator` module provided in `LLAMAIndex` to eva
   * AP: the average of precision values at the ranks where relevant documents are retrieved.
   * NDCG: the quality of a ranking based on the positions of relevant documents
 
-The results demonstrate a clear improvement in retrieval performance of approximately 5% when using the customized PDF data loader
+The results demonstrate a clear improvement in retrieval performance of approximately 5% when using the `custom PDFLoader`.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
