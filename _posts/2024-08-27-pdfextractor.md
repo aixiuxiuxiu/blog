@@ -17,16 +17,10 @@ Extracting text from PDFs are challenging in many aspects (can also read [this](
 * **Discontinuous text chunks**: Text might be broken into fragments that need to be reassembled into meaningful sequences.
 
 
-
 <!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
 
 There are various  PDF extraction tools available on the market. Some companies provide paid solutions with advanced features, while several open-source Python packages, such as PyPDF and PDFPlumber, are also available. In this blog, I will present an experiment comparing the impact of different PDF extraction methods on retrieval performance. The results show that high-quality PDF extraction can significantly improve retrieval. (The code is available on [Github](https://github.com/aixiuxiuxiu/pdf-extraction-blog/tree/main))
-
-
-
-
-
 
 
 ## PDF extraction
@@ -43,10 +37,7 @@ The following example is a PDF excerpt from the [Swiss Civil Code](https://www.f
 </div>
 
 
-
-
 Here I use [`pdfplumber`](https://github.com/jsvine/pdfplumber), a library built on top of [`pdfminer.six`](https://github.com/goulu/pdfminer), that offers a wide range of customizable features for extracting text from PDFs. This package allows the extraction of pages and text while preserving the original layout. Additionally, it can parse various character properties, such as page number, text, and coordinates. For instance, the `.crop()` method can be used to crop a page into a specific bounding box: `.crop((x0, top, x1, bottom), relative=False, strict=True)`.
-
 
 
 I built two data loaders. The first one, called `PDFLoader`, extracts sequences directly using `pdfplumber` without additional postprocessing. In this approach, the raw extraction from the PDF example above appears unstructured and unnatural, as it reads lines horizontally, even when they are split into two blocks. 
@@ -61,7 +52,7 @@ I built two data loaders. The first one, called `PDFLoader`, extracts sequences 
 {% endif %}
 {:/nomarkdown}
 
-</div>
+
 <div class="caption">
 Illustraction of PDFLoader result
 </div>
@@ -80,7 +71,6 @@ The other is called `Custom PDFLoader`, which uses `pdfplumber`  to combine disc
 {% endif %}
 {:/nomarkdown}
 
-</div>
 <div class="caption">
 Illustraction of Custom PDFLoader result
 </div>
@@ -114,10 +104,9 @@ The results demonstrate a clear improvement in retrieval performance of approxim
 Evaluation of retrieval 
 </div>
 
-This experiment highlights that optimizing PDF extraction is crucial and can be just as important as improving embedding models. Please note that this article focuses on PDFs containing only text. If your PDF contains more complex elements, such as images or tables, alternative methods may need to be considered. Recently, the model [ColPali](https://arxiv.org/html/2407.01449v2) has gained significant attention for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging modern Vision-Language Models can generate high-quality, contextualized embeddings directly from images of document pages.
 
 
-
+This experiment highlights that optimizing PDF extraction is crucial and can be just as important as improving embedding models. Please note that this article focuses on PDFs containing only text. If your PDF contains more complex elements, such as images or tables, alternative methods may need to be considered. Recently, there has been a spike in interest in the new model [ColPali](https://arxiv.org/html/2407.01449v2) for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging modern Vision-Language Models can generate high-quality, contextualized embeddings directly from images of document pages.
 
 
 
