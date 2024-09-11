@@ -51,8 +51,6 @@ I built two data loaders. The first one, called `PDFLoader`, extracts sequences 
   <p>Sorry, the notebook you are looking for does not exist.</p>
 {% endif %}
 {:/nomarkdown}
-
-
 <div class="caption">
 Illustraction of PDFLoader result
 </div>
@@ -70,7 +68,6 @@ The other is called `Custom PDFLoader`, which uses `pdfplumber`  to combine disc
   <p>Sorry, the notebook you are looking for does not exist.</p>
 {% endif %}
 {:/nomarkdown}
-
 <div class="caption">
 Illustraction of Custom PDFLoader result
 </div>
@@ -85,9 +82,10 @@ This section evaluates retrieval quality by comparing the two methods of PDF ext
 * First, I split the entire PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en) (about 350 pages), into small chunks of 1024 characters, with a chunk overlap of 200.
 
 * Second, I created the evaluation dataset using the `generate_question_context_pairs` function. This function can automatically generate a set of (question, context) pairs using LLMs. I generated two questions from each context chunk with GPT-4-mini, resulting in a total number of questions.
-* I built a retriever using the built-in `VectorStoreIndex` function in `LLAMAIndex`, and performed retrieval using the top-k similarity method.
-* Finally, I ran the `RetrieverEvaluator` on the evaluation dataset we generated, using the provided evaluation metrics.
 
+* I built a retriever using the built-in `VectorStoreIndex` function in `LLAMAIndex`, and performed retrieval using the top-k similarity method.
+
+* Finally, I ran the `RetrieverEvaluator` on the evaluation dataset we generated, using the provided evaluation metrics.
   * hit-rate: the correct answer is present in the top k retrieved results
   * MRR: the reciprocal of the rank at which the first relevant result appears.
   * Precision:  the fraction of relevant documents retrieved out of the total number of documents retrieved.
@@ -102,14 +100,10 @@ The results demonstrate a clear improvement in retrieval performance of approxim
         {% include figure.liquid loading="eager" path="assets/img/result.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
     
-</div>
-<div class="caption">
-Evaluation of retrieval 
-</div>
 
 
 
-This experiment highlights that optimizing PDF extraction is crucial and can be just as important as improving embedding models. Please note that this article focuses on PDFs containing only text. If your PDF contains more complex elements, such as images or tables, alternative methods may need to be considered. Recently, there has been a spike in interest in the new model [ColPali](https://arxiv.org/html/2407.01449v2) for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging modern Vision-Language Models can generate high-quality, contextualized embeddings directly from images of document pages.
+This experiment highlights that optimizing PDF extraction is crucial, and can be just as important as improving embedding models. Please note that this article focuses on PDFs containing only text. If your PDF contains more complex elements, such as images or tables, alternative methods may need to be considered. Recently, there has been a spike in interest in the new model [ColPali](https://arxiv.org/html/2407.01449v2) for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging modern Vision-Language Models can generate high-quality, contextualized embeddings directly from images of document pages.
 
 
 
