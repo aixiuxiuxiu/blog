@@ -56,7 +56,7 @@ Illustraction of PDFLoader result
 </div>
 
 
-The other is called `Custom PDFLoader`, which uses `pdfplumber`  to combine discontinuous chunks into continuous sequences. Here, I extract text from two distinct boxes: one for the left side and one for the right side of the page. I use the `x0` of the word **Art** as the `x0` for the right box and the same value as the `x1` for the left box. This makes the extracted sequences more natural.
+The other is called `Custom PDFLoader`, which uses `pdfplumber`  to extract text from different boxes and combine them together. Here, I extract text from two distinct boxes: one for the left side and one for the right side of the page. I use the `x0` of the word **Art** as the `x0` for the right box and the same value as the `x1` for the left box. This makes the extracted sequences more natural.
 
 
 {::nomarkdown}
@@ -79,7 +79,7 @@ This section evaluates retrieval quality by comparing the two methods of PDF ext
 
 
 
-* First, I split the entire PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en) (about 350 pages), into small chunks of 1024 characters, with a chunk overlap of 200.
+* First, I split the extracted text from the PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en) (about 350 pages), into small chunks of 1024 characters, with a chunk overlap of 200.
 * Second, I created the evaluation dataset using the `generate_question_context_pairs` function. This function can automatically generate a set of (question, context) pairs using LLMs. I generated two questions from each context chunk with GPT-4-mini, resulting in a total number of 450 queries.
 * I built a retriever using the built-in `VectorStoreIndex` function in `LLAMAIndex`, and performed retrieval using the top-k similarity method.
 * Finally, I ran the `RetrieverEvaluator` on the evaluation dataset we generated, using the provided evaluation metrics.
