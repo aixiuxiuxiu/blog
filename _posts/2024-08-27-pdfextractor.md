@@ -80,11 +80,8 @@ This section evaluates retrieval quality by comparing the two methods of PDF ext
 
 
 * First, I split the entire PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en) (about 350 pages), into small chunks of 1024 characters, with a chunk overlap of 200.
-
-* Second, I created the evaluation dataset using the `generate_question_context_pairs` function. This function can automatically generate a set of (question, context) pairs using LLMs. I generated two questions from each context chunk with GPT-4-mini, resulting in a total number of questions.
-
+* Second, I created the evaluation dataset using the `generate_question_context_pairs` function. This function can automatically generate a set of (question, context) pairs using LLMs. I generated two questions from each context chunk with GPT-4-mini, resulting in a total number of 450 queries.
 * I built a retriever using the built-in `VectorStoreIndex` function in `LLAMAIndex`, and performed retrieval using the top-k similarity method.
-
 * Finally, I ran the `RetrieverEvaluator` on the evaluation dataset we generated, using the provided evaluation metrics.
   * hit-rate: the correct answer is present in the top k retrieved results
   * MRR: the reciprocal of the rank at which the first relevant result appears.
