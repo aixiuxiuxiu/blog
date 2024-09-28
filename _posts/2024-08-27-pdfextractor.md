@@ -77,6 +77,10 @@ Illustraction of Custom PDFLoader result
 
 This section evaluates retrieval quality by comparing the two methods of PDF extraction: `Custom PDFLoader` and `PDFLoader`, using the `RetrieverEvaluator` module provided in `LLAMAIndex`.
 
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/pdf-flow.png" class="img-fluid rounded z-depth-1" zoomable=true %}
+    </div>
 
 
 * First, I split the extracted text from the PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en) (about 350 pages), into small chunks of 1024 characters, with a chunk overlap of 200.
