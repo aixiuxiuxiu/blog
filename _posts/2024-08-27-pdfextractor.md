@@ -29,8 +29,8 @@ There are various  PDF extraction tools available on the market. Some companies 
 The following example is a PDF excerpt from the [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en). The PDF page presents a high level of complexity, with text that is discontinuously arranged and interspersed with numerous footnotes.
 
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
+<div class="row justify-content-center mt-3">
+    <div class="col-sm mt-3 mt-md-0" style="width: 90%;">
         {% include figure.liquid loading="eager" path="assets/img/pdf_example.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
     
@@ -77,8 +77,8 @@ Illustraction of Custom PDFLoader result
 
 This section evaluates retrieval quality by comparing the two methods of PDF extraction: `Custom PDFLoader` and `PDFLoader`, using the `RetrieverEvaluator` module provided in `LLAMAIndex`.
 
-<div class="row mt-3">
-    <div class="col-sm-9 mt-3 mt-md-0" style="width: 75%;">
+<div class="row justify-content-center mt-3">
+    <div class="col-sm-9 mt-3 mt-md-0" style="width: 65%;">
         {% include figure.liquid loading="eager" path="assets/img/pdf-flow.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 
@@ -96,8 +96,8 @@ This section evaluates retrieval quality by comparing the two methods of PDF ext
 
 The results demonstrate a clear improvement in retrieval performance of approximately 5% when using the `custom PDFLoader`.
 
-<div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
+<div class="row justify-content-center mt-3">
+    <div class="col-sm mt-3 mt-md-0" style="width: 90%;">
         {% include figure.liquid loading="eager" path="assets/img/result.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
     
