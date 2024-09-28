@@ -78,7 +78,7 @@ Illustraction of Custom PDFLoader result
 This section evaluates retrieval quality by comparing the two methods of PDF extraction: `Custom PDFLoader` and `PDFLoader`, using the `RetrieverEvaluator` module provided in `LLAMAIndex`.
 
 <div class="row mt-3">
-    <div class="col-sm mt-3 mt-md-0">
+    <div class="col-sm-9 mt-3 mt-md-0" style="width: 75%;">
         {% include figure.liquid loading="eager" path="assets/img/pdf-flow.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
 
