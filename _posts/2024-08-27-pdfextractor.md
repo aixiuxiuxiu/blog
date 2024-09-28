@@ -30,7 +30,7 @@ The following example is a PDF excerpt from the [Swiss Civil Code](https://www.f
 
 
 <div class="row justify-content-center mt-3">
-    <div class="col-sm mt-3 mt-md-0" style="width: 90%;">
+     <div class="col-sm-9 mt-3 mt-md-0" style="width: 90%;">
         {% include figure.liquid loading="eager" path="assets/img/pdf_example.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
     
@@ -98,7 +98,7 @@ This section evaluates retrieval quality by comparing the two methods of PDF ext
 The results demonstrate a clear improvement in retrieval performance of approximately 5% when using the `custom PDFLoader`.
 
 <div class="row justify-content-center mt-3">
-    <div class="col-sm mt-3 mt-md-0" style="width: 75%;">
+   <div class="col-sm-9 mt-3 mt-md-0" style="width: 75%;">
         {% include figure.liquid loading="eager" path="assets/img/result.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
   </div>
