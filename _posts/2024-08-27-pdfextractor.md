@@ -106,7 +106,7 @@ The results demonstrate a clear improvement in retrieval performance of approxim
 
 
 
-This experiment highlights that optimizing PDF extraction is crucial, and can be just as important as improving embedding models. Please note that this article focuses on PDFs containing only text. If your PDF contains more complex elements, such as images or tables, alternative methods may need to be considered. Recently, there has been a spike in interest in the new model [ColPali](https://arxiv.org/pdf/2407.01449) for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging modern Vision-Language Models can generate high-quality, contextualized embeddings directly from images of document pages.
+This experiment highlights that optimizing PDF extraction is crucial, and can be just as important as improving embedding models. Please note that this article focuses on PDFs containing only text. If your PDF contains more complex elements, such as images or tables, alternative methods may need to be considered. Recently, there has been a spike in interest in the new model [ColPali](https://arxiv.org/pdf/2407.01449) for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that when a document contains rich structures, such as tables and figures, leveraging modern Vision-Language Models can generate high-quality, contextualized embeddings directly from images of the document pages.
 
 
 
