@@ -81,6 +81,7 @@ This section evaluates retrieval quality by comparing the two methods of PDF ext
     <div class="col-sm-9 mt-3 mt-md-0" style="width: 65%;">
         {% include figure.liquid loading="eager" path="assets/img/pdf-flow.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
+  </div>
 
 
 * First, I split the extracted text from the PDF file [Swiss Civil Code](https://www.fedlex.admin.ch/eli/cc/24/233_245_233/en) (about 350 pages), into small chunks of 1024 characters, with a chunk overlap of 200.
@@ -100,6 +101,7 @@ The results demonstrate a clear improvement in retrieval performance of approxim
     <div class="col-sm mt-3 mt-md-0" style="width: 90%;">
         {% include figure.liquid loading="eager" path="assets/img/result.png" class="img-fluid rounded z-depth-1" zoomable=true %}
     </div>
+  </div>
     
 
 
