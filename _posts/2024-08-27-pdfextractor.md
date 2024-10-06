@@ -1,14 +1,12 @@
 ---
-layout: distill
+layout: post
 title: Optimizing PDF Extraction for Building a Robust RAG
 date: 2024-09-11 00:32:13
 tags: RAG Evaluation
 categories: sample-posts
+description: Author: Aixiu An
 tabs: true
-authors:
-  - name: Aixiu An
-    #affiliations:
-    #  name: IAS, Princeton
+
 ---
 
 Recently, Retrieval-Augmented Generation (RAG) has emerged as a prominent approach that leverages large language models for building advanced applications. However, in practical industrial settings, the primary bottleneck affecting RAG performance—especially in document retrieval—often lies not in the capabilities of the embedding model, but in the data ingestion pipeline. The process of building a RAG system begins with indexing documents, many of which are in PDF format. This typically involves using PDF parsers to extract text from the document’s pages, a crucial step that significantly impacts the overall retrieval accuracy.
