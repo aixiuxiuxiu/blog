@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How LLMs handle long context
-date: 2024-10-12 09:56:00-0400
+date: 2024-10-2 09:56:00-0400
 tags: LLM
 categories: sample-posts
 #giscus_comments: true
