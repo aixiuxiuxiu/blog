@@ -2,7 +2,7 @@
 layout: post
 title: Optimizing PDF Extraction for Building a Robust RAG
 date: 2024-09-11 00:32:13
-description: 
+Author: Aixiu An
 tags: RAG Evaluation
 categories: sample-posts
 tabs: true
