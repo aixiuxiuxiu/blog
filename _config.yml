@@ -133,7 +133,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: Hi 👋 # blog_name will be displayed in your blog page
-blog_description:  My name is Aixiu. I document here my learning notes on building robust AI solutions for enterprises.
+blog_description:  My name is Aixiu. I document here my learning notes for building robust AI solutions for enterprises.
 permalink: /:year/:title/
 lsi: false # produce an index for related posts
 
