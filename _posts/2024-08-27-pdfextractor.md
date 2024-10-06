@@ -17,7 +17,6 @@ Extracting text from PDFs are challenging in many aspects (can also read [this](
 * **Discontinuous text chunks**: Text might be broken into fragments that need to be reassembled into meaningful sequences.
 
 
-<!-- Recently, the new model [ColPali](https://arxiv.org/html/2407.01449v2) has attracte a lot of attention, for its use of a vision-language model to extract information for retrieval purposes. This approach demonstrates that leveraging recent Vision Language Models can produce high-quality, contextualized embeddings directly from images of document pages. -->
 
 
 There are various  PDF extraction tools available on the market. Some companies provide paid solutions with advanced features, while several open-source Python packages, such as PyPDF and PDFPlumber, are also available. In this blog, I will present an experiment comparing the impact of different PDF extraction methods on retrieval performance. The results show that high-quality PDF extraction can significantly improve retrieval. (The code is available on [Github](https://github.com/aixiuxiuxiu/pdf-extraction-blog/tree/main))
