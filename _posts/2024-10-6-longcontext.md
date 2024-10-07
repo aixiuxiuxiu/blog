@@ -14,7 +14,7 @@ anthor: Aixiu An
     #affiliations:
     #  name: IAS, Princeton
 
-bibliography: 2018-12-22-distill.bib
+bibliography: 2024-10-07-LongContext.bib
 
 # Optionally, you can add a table of contents to your post.
 # NOTES:
@@ -60,9 +60,10 @@ Most LLMs, such as GPT and BERT, are built on the Transformer architecture, whic
 In addition to computational constraints, processing long contexts also increases complexity. Long sentences often contain intricate language structures that are challenging even for humans to interpret, a phenomenon particularly evident in domains such as legal and financial texts.
 
 ## Long context in training
-
+LLama report  <d-cite key="dubey2024llama"></d-cite>
 ## Encode long context
 
+## Long context in evaluation
 <!---
 ## Citations
 
