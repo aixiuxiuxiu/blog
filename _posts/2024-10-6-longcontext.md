@@ -6,9 +6,10 @@ tags: distill formatting
 #giscus_comments: true
 date: 2024-9-22
 featured: false
+anthor: Aixiu An
 
-authors:
-  - name: Aixiu An
+#authors:
+#  - name: Aixiu An
     #url: "https://en.wikipedia.org/wiki/Albert_Einstein"
     #affiliations:
     #  name: IAS, Princeton
@@ -53,13 +54,11 @@ _styles: >
   }
 ---
 
+## Why long context is so important?
 
-
+<!---
 ## Citations
 
-Citations are then used in the article body with the `<d-cite>` tag.
-The key attribute is a reference to the id provided in the bibliography.
-The key attribute can take multiple ids, separated by commas.
 
 The citation is presented inline like this: <d-cite key="gregor2015draw"></d-cite> (a number that displays more information on hover).
 If you have an appendix, a bibliography is automatically created and populated in it.
@@ -101,3 +100,4 @@ return x \* x;
 
 ---
 
+--->
