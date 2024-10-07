@@ -29,8 +29,8 @@ toc:
     #   - name: Example Child Subsection 1
     #   - name: Example Child Subsection 2
   - name: Long Context in training
-  - name: Encode Long Context
-
+  - name: Long context in encoding
+  - name: Long context in evaluation
 
 # Below is an example of injecting additional post-specific styles.
 # If you use this post as a template, delete this _styles block.
