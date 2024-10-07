@@ -23,17 +23,14 @@ bibliography: 2018-12-22-distill.bib
 #   - we may want to automate TOC generation in the future using
 #     jekyll-toc plugin (https://github.com/toshimaru/jekyll-toc).
 toc:
-  - name: Equations
+  - name: Why long context is so hard?
     # if a section has subsections, you can add them as follows:
     # subsections:
     #   - name: Example Child Subsection 1
     #   - name: Example Child Subsection 2
-  - name: Citations
-  - name: Footnotes
-  - name: Code Blocks
-  - name: Interactive Plots
-  - name: Layouts
-  - name: Other Typography?
+  - name: Long Context in training
+  - name: Encode Long Context
+
 
 # Below is an example of injecting additional post-specific styles.
 # If you use this post as a template, delete this _styles block.
@@ -62,8 +59,9 @@ Most LLMs, such as GPT and BERT, are built on the Transformer architecture, whic
 
 In addition to computational constraints, processing long contexts also increases complexity. Long sentences often contain intricate language structures that are challenging even for humans to interpret, a phenomenon particularly evident in domains such as legal and financial texts.
 
-## Long Context in training
+## Long context in training
 
+## Encode long context
 
 <!---
 ## Citations
