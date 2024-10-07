@@ -74,8 +74,13 @@ window. This long-context pre-training stage was performed using approximately 8
 
 ## Long context in encoding
 
-Many progress has made to encode the long context efficiently: 
-- Navive chuncking
-- Late chuncking Jina AI <d-cite key="gunther2024late"></d-cite>   
+Recently, many progress has made to encode the long context efficiently: 
+- Navive chuncking: The naive encoding approach (as seen on the left side of the image below) involves using sentences, paragraphs, or maximum length limits to split the text a priori. Afterward, an embedding model is repetitively applied to these resulting chunks. To generate a single embedding for each chunk, many embedding models use mean pooling on these token-level embeddings to output a single embedding vector.
+- Late chuncking Jina AI <d-cite key="gunther2024late"></d-cite>: first applies the transformer layer of the embedding model to the entire text or as much of it as possible. This generates a sequence of vector representations for each token that encompasses textual information from the entire text. Subsequently, mean pooling is applied to each chunk of this sequence of token vectors, yielding embeddings for each chunk that consider the entire text's context. Unlike the naive encoding approach, which generates independent and identically distributed (i.i.d.) chunk embeddings, late chunking creates a set of chunk embeddings where each one is "conditioned on" the previous ones, thereby encoding more contextual information for each chunk.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/latechuncking.jpg" class="img-fluid rounded z-depth-1" %}
+    </div
 
 ## Long context in evaluation
