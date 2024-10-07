@@ -74,49 +74,8 @@ window. This long-context pre-training stage was performed using approximately 8
 
 ## Long context in encoding
 
+Many progress has made to encode the long context efficiently: 
+- Navive chuncking
+- Late chuncking Jina AI <d-cite key="gunther2024late"></d-cite>   
+
 ## Long context in evaluation
-<!---
-## Citations
-
-
-The citation is presented inline like this: <d-cite key="gregor2015draw"></d-cite> (a number that displays more information on hover).
-If you have an appendix, a bibliography is automatically created and populated in it.
-
-Distill chose a numerical inline citation style to improve readability of citation dense articles and because many of the benefits of longer citations are obviated by displaying more information on hover.
-However, we consider it good style to mention author last names if you discuss something at length and it fits into the flow well — the authors are human and it’s nice for them to have the community associate them with their work.
-
----
-
-## Footnotes
-
-Just wrap the text you would like to show up in a footnote in a `<d-footnote>` tag.
-The number of the footnote will be automatically generated.<d-footnote>This will become a hoverable footnote.</d-footnote>
-
----
-
-## Code Blocks
-
-Syntax highlighting is provided within `<d-code>` tags.
-An example of inline code snippets: `<d-code language="html">let x = 10;</d-code>`.
-For larger blocks of code, add a `block` attribute:
-
-<d-code block language="javascript">
-  var x = 25;
-  function(x) {
-    return x * x;
-  }
-</d-code>
-
-**Note:** `<d-code>` blocks do not look good in the dark mode.
-You can always use the default code-highlight using the `highlight` liquid tag:
-
-{% highlight javascript %}
-var x = 25;
-function(x) {
-return x \* x;
-}
-{% endhighlight %}
-
----
-
---->
