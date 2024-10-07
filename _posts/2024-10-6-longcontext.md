@@ -80,8 +80,15 @@ Recently, many progress has made to encode the long context efficiently:
 
 <div class="row mt-3" style="background-color: black;">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/latechuncking.jpg" class="img-fluid rounded z-depth-1" %}
+        <figure style="width: 90%; margin: 0 auto;">
+            {% include figure.liquid loading="eager" path="assets/img/latechuncking.jpg" class="img-fluid rounded z-depth-1" %}
+            <figcaption class="text-white text-center mt-2">
+              An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI [blog](https://jina.ai/news/late-chunking-in-long-context-embedding-models/)
+            </figcaption>
+        </figure>
     </div>
 </div>
+
+
 
 ## Long context in evaluation
