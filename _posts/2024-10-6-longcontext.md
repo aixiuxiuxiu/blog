@@ -75,7 +75,7 @@ window. This long-context pre-training stage was performed using approximately 8
 ## Long context in encoding
 
 Recently, many progress has made to encode the long context efficiently: 
-- Navive chuncking: The naive encoding approach (as seen on the left side of the image below) involves using sentences, paragraphs, or maximum length limits to split the text a priori. Afterward, an embedding model is repetitively applied to these resulting chunks. To generate a single embedding for each chunk, many embedding models use mean pooling on these token-level embeddings to output a single embedding vector.
+- Navive chuncking: The naive encoding approach (as seen on the left side of the image below) involves using sentences, paragraphs, or maximum length limits to split the text a priori. Afterward, an embedding model is repetitively applied to these resulting chunks. To generate a single embedding for each chunk, many embedding models use mean pooling on these token-level embeddings to output a single embedding vector. See an example from [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs)
 - Late chuncking Jina AI <d-cite key="gunther2024late"></d-cite>: first applies the transformer layer of the embedding model to the entire text or as much of it as possible. This generates a sequence of vector representations for each token that encompasses textual information from the entire text. Subsequently, mean pooling is applied to each chunk of this sequence of token vectors, yielding embeddings for each chunk that consider the entire text's context. Unlike the naive encoding approach, which generates independent and identically distributed (i.i.d.) chunk embeddings, late chunking creates a set of chunk embeddings where each one is "conditioned on" the previous ones, thereby encoding more contextual information for each chunk.
 
 <div class="row mt-3" style="background-color: black;">
@@ -90,5 +90,6 @@ Recently, many progress has made to encode the long context efficiently:
     </div>
 </div>
 
+- ColBERT’s Late Interaction <d-cite key="santhanam2022colbertv2effectiveefficientretrieval"></d-cite>
 
 ## Long context in evaluation
