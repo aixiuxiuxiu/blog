@@ -90,6 +90,8 @@ Recently, many progress has made to encode the long context efficiently:
     </div>
 </div>
 
-- ColBERT’s Late Interaction <d-cite key="santhanam2022colbertv2effectiveefficientretrieval"></d-cite>
+- ColBERT’s Late Interaction <d-cite key="santhanam2021colbertv2"></d-cite>
 
 ## Long context in evaluation
+
+ <d-cite key="dubois2024length"></d-cite>
