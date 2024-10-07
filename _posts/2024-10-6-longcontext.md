@@ -81,6 +81,7 @@ Recently, many progress has made to encode the long context efficiently:
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/latechuncking.jpg" class="img-fluid rounded z-depth-1" %}
-    </div
+    </div>
+</div>
 
 ## Long context in evaluation
