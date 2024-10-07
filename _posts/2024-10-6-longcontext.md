@@ -14,7 +14,7 @@ anthor: Aixiu An
     #affiliations:
     #  name: IAS, Princeton
 
-bibliography: 2024-10-06-LongContext.bib
+bibliography: 2024-10-6-longcontext.bib
 
 # Optionally, you can add a table of contents to your post.
 # NOTES:
@@ -61,7 +61,8 @@ In addition to computational constraints, processing long contexts also increase
 
 ## Long context in training
 LLama report  <d-cite key="dubey2024llama"></d-cite>
-## Encode long context
+
+## Long context in encoding
 
 ## Long context in evaluation
 <!---
