@@ -60,7 +60,18 @@ Most LLMs, such as GPT and BERT, are built on the Transformer architecture, whic
 In addition to computational constraints, processing long contexts also increases complexity. Long sentences often contain intricate language structures that are challenging even for humans to interpret, a phenomenon particularly evident in domains such as legal and financial texts.
 
 ## Long context in training
-LLama report  <d-cite key="dubey2024llama"></d-cite>
+
+It was not quite clear how the GPT models deal with long context. 
+
+LLama report <d-cite key="dubey2024llama"></d-cite>  has clarified :
+> In the final stages of pre-training, we train on long sequences to support context windows of up to 128K tokens.
+We do not train on long sequences earlier because the compute in self-attention layers grows quadratically in
+the sequence length. We increase the supported context length in increments, pre-training until the model has
+successfully adapted to the increased context length. We assess successful adaptation by measuring whether (1)
+model performance on short-context evaluations has recovered completely and (2) the model perfectly solves
+“needle in a haystack” tasks up to that length. In Llama 3 405B pre-training, we increased context length
+gradually in six stages, starting from the original 8K context window and ending in the final 128K context
+window. This long-context pre-training stage was performed using approximately 800B training tokens.
 
 ## Long context in encoding
 
