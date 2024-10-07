@@ -54,13 +54,16 @@ _styles: >
   }
 ---
 
-## Why long context is so important?
+## Why long context is so hard?
 
-Handling long contexts is one of the main challenges for large language models. Current LLMs are limited by context length; for example, BERT has a 1024-token context window.
+Handling long contexts is one of the main challenges for large language models (LLMs). Current LLMs are limited by their context length; for example, BERT-based models typically have a context window of 512 tokens, while standard GPT-3 models can handle around 2048 tokens. GPT-4 offers two versions: one with a context window of 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens).
 
-Not only is the ability to process long contexts constrained by computational limitations, but it also introduces higher complexity. Long sentences often contain complex language structures that are difficult even for humans to understand. This phenomenon is particularly common in legal and financial texts. for instance, 
+Most LLMs, such as GPT and BERT, are built on the Transformer architecture, which relies on a self-attention mechanism. This mechanism compares each token in the input sequence to every other token, resulting in quadratic complexity in terms of both memory usage and computational cost.
 
-## W
+In addition to computational constraints, processing long contexts also increases complexity. Long sentences often contain intricate language structures that are challenging even for humans to interpret, a phenomenon particularly evident in domains such as legal and financial texts.
+
+## Long Context in training
+
 
 <!---
 ## Citations
