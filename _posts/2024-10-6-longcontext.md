@@ -61,9 +61,8 @@ In addition to computational constraints, processing long contexts also increase
 
 ## Long context in training
 
-It was not quite clear how the GPT models deal with long context. 
+While most closed-source models provide limited information on this topic, the LLama report <d-cite key="dubey2024llama"></d-cite> elaborates on it, explaining that handling long contexts typically occurs during the later stages of pretraining:
 
-LLama report <d-cite key="dubey2024llama"></d-cite>  has clarified :
 > In the final stages of pre-training, we train on long sequences to support context windows of up to 128K tokens.
 We do not train on long sequences earlier because the compute in self-attention layers grows quadratically in
 the sequence length. We increase the supported context length in increments, pre-training until the model has
