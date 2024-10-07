@@ -1,10 +1,10 @@
 ---
 layout: distill
 title: How LLMs handle long context? 
-description: an example of a distill-style blog post and main elements
+#description: an example of a distill-style blog post and main elements
 tags: distill formatting
 #giscus_comments: true
-date: 2024-9-22
+date: 2024-10-07
 featured: false
 anthor: Aixiu An
 
@@ -55,6 +55,12 @@ _styles: >
 ---
 
 ## Why long context is so important?
+
+Handling long contexts is one of the main challenges for large language models. Current LLMs are limited by context length; for example, BERT has a 1024-token context window.
+
+Not only is the ability to process long contexts constrained by computational limitations, but it also introduces higher complexity. Long sentences often contain complex language structures that are difficult even for humans to understand. This phenomenon is particularly common in legal and financial texts. for instance, 
+
+## W
 
 <!---
 ## Citations
