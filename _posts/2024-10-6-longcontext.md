@@ -2,7 +2,7 @@
 layout: distill
 title: How LLMs handle long context? 
 #description: an example of a distill-style blog post and main elements
-tags: distill formatting
+tags: LLM evaluation
 #giscus_comments: true
 date: 2024-10-07
 featured: false
@@ -14,7 +14,7 @@ anthor: Aixiu An
     #affiliations:
     #  name: IAS, Princeton
 
-bibliography: 2024-10-07-LongContext.bib
+bibliography: 2024-10-06-LongContext.bib
 
 # Optionally, you can add a table of contents to your post.
 # NOTES:
