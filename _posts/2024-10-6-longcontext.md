@@ -53,11 +53,12 @@ _styles: >
 
 ## Why long context is so hard?
 
-Handling long contexts is one of the main challenges for large language models (LLMs). Current LLMs are limited by their context length; for example, BERT-based models typically have a context window of 512 tokens, while standard GPT-3 models can handle around 2048 tokens. GPT-4 offers two versions: one with a context window of 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens).
+Long contexts present several challenges for large language models (LLMs), as most current models have limited context windows. For instance, BERT-based models typically have a window of 512 tokens, meaning they can only encode sequences up to that length. If a sequence exceeds 512 tokens, only part of it is encoded. In contrast, standard GPT-3 models handle around 2,048 tokens, while GPT-4 offers two variants: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). However, many cases involve documents that far exceed these limits. For example, when building a retrieval-augmented generation (RAG) system that integrates internal documents, it is often necessary to encode multi-page documents. Similarly, in chat applications, integrating previous conversations that span several pages may also be required.
 
-Most LLMs, such as GPT and BERT, are built on the Transformer architecture, which relies on a self-attention mechanism. This mechanism compares each token in the input sequence to every other token, resulting in quadratic complexity in terms of both memory usage and computational cost.
+In addressing this challenge, two main research directions have emerged. The first is to develop models with longer context windows (as shown in the table illustrating the evolution of context windows). Most LLMs, such as GPT and BERT, are built on the Transformer architecture, which relies on a self-attention mechanism. This mechanism compares each token in the input sequence to every other token, resulting in quadratic complexity in both memory usage and computational cost.
 
-In addition to computational constraints, processing long contexts also increases complexity. Long sentences often contain intricate language structures that are challenging even for humans to interpret, a phenomenon particularly evident in domains such as legal and financial texts.
+The second direction involves improving encoding techniques. Encoding an entire context into a single embedding vector can lead to information loss. Alternatively, chunking long texts into shorter chunks, while still accounting for the dependencies between them, offers another approach.
+
 
 ## Long context in training
 
