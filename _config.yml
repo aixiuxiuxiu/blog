@@ -3,9 +3,9 @@
 # -----------------------------------------------------------------------------
 
 title: blank # the website title (if blank, full name will be used instead)
-first_name: AI
+first_name: Aixiu
 middle_name: 
-last_name: show
+last_name: An
 email: aixiu0806@gmail.com
 description: > # the ">" symbol means to ignore newlines until "footer_text:"
  My name is . I document here my learning notes for building robust AI solutions for entreprises. Based on [*folio](https://github.com/bogoli/-folio) design.
