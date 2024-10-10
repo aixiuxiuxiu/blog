@@ -313,7 +313,7 @@ display_tags: ["RAG", "LLM", "Deployment", "Evaluation", "Database"] # these tag
 
 scholar:
   last_name: [Einstein]
- first_name: [Albert, A.]
+  first_name: [Albert, A.]
 
   style: apa
   locale: en
