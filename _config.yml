@@ -133,15 +133,12 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 
 blog_name: Hi 👋 # blog_name will be displayed in your blog page
-blog_description:  My name is Aixiu An. I document here my learning notes for building robust AI solutions for enterprises.
+blog_description:|  
+My name is Aixiu An. I document here my learning notes for building robust AI solutions for enterprises.
 
-<a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">
-    <img src="https://img.icons8.com/material-outlined/24/000000/linkedin.png" alt="LinkedIn">
-  </a>
-  <a href="https://github.com/your-github-username" target="_blank">
-    <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub">
-  </a>
-  
+🔗 [LinkedIn](https://www.linkedin.com/in/your-linkedin-profile)
+🐙 [GitHub](https://github.com/your-github-username)
+
 permalink: /:year/:title/
 lsi: false # produce an index for related posts
 
