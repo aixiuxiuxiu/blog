@@ -137,8 +137,8 @@ blog_description: |
   My name is Aixiu. I document here my learning notes for building robust AI solutions for enterprises.
 
 #Connect with me on:
-#<a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a>
-#<a href="https://github.com/your-github-username" target="_blank">GitHub</a>
+  <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank">LinkedIn</a>
+  <a href="https://github.com/your-github-username" target="_blank">GitHub</a>
 
 permalink: /:year/:title/
 lsi: false # produce an index for related posts
