@@ -1,6 +1,6 @@
 ---
 layout: distill
-title: How LLMs handle long context? 
+title: How to Encode Long Text Using Large Language Models? 
 #description: an example of a distill-style blog post and main elements
 tags: LLM evaluation
 #giscus_comments: true
@@ -28,7 +28,6 @@ toc:
     # subsections:
     #   - name: Example Child Subsection 1
     #   - name: Example Child Subsection 2
-  - name: Long Context in training
   - name: Long context in encoding
   - name: Long context in evaluation
 
@@ -53,7 +52,7 @@ _styles: >
 
 ## Why long context is so hard?
 
-Long contexts present several challenges for large language models (LLMs), as most current models have limited context length. For instance, BERT-based models typically have a context length of 512 tokens—if a sequence exceeds 512 tokens, only part of it is encoded. In contrast, standard GPT-3 models handle around 2,048 tokens, while GPT-4 offers two variants: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). However, many applications involving LLMs require handling documents that far exceed these limits. For example, building a retrieval-augmented generation (RAG) system requires integrating internal knowledge bases, which often involves encoding multi-page documents. Likewise, chat applications may need to include background context (e.g., previous conversations) spanning several pages.
+Long contexts present several challenges for large language models (LLMs), as most current models have limited context length. For instance, BERT-based models typically have a context length of 512 tokens—if a sequence exceeds 512 tokens, only part of it is encoded. In contrast, standard GPT-3 models handle around 2,048 tokens, while GPT-4 offers two variants: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). However, many tasks involving LLMs require handling documents that far exceed these limits. For example, building a retrieval-augmented generation (RAG) system requires integrating internal knowledge bases, which often involves encoding multi-page documents. Likewise, chat applications may need to include background context (e.g., previous conversations) spanning several pages.
 
 In addressing this challenge, two main research directions have emerged. The first is to develop models with longer context lengths, as illustrated by the table showing the evolution of context length across different models. However, this is challenging because most LLMs, such as GPT and BERT, are based on the transformer architecture, which uses a self-attention mechanism. This mechanism compares each token in the input sequence with every other token, leading to quadratic complexity in both memory usage and computational cost.
 
@@ -70,18 +69,7 @@ In addressing this challenge, two main research directions have emerged. The fir
 The second approach involves improving encoding techniques. Encoding all the information from a multi-page document into a single embedding vector is difficult, if not impossible. Although we have a model with a long context window, trying to encode everything from multiple pages into one vector may result in the loss of important information. Alternatively, chunking long texts into smaller segments while maintaining dependencies between them offers a more viable approach.
 
 
-## Long context in training
-
-While most closed-source models provide limited information on this topic, the LLama report <d-cite key="dubey2024llama"></d-cite> elaborates on it, explaining that handling long contexts typically occurs during the later stages of pretraining:
-
-> In the final stages of pre-training, we train on long sequences to support context windows of up to 128K tokens.
-We do not train on long sequences earlier because the compute in self-attention layers grows quadratically in
-the sequence length. We increase the supported context length in increments, pre-training until the model has
-successfully adapted to the increased context length. We assess successful adaptation by measuring whether (1)
-model performance on short-context evaluations has recovered completely and (2) the model perfectly solves
-“needle in a haystack” tasks up to that length. In Llama 3 405B pre-training, we increased context length
-gradually in six stages, starting from the original 8K context window and ending in the final 128K context
-window. This long-context pre-training stage was performed using approximately 800B training tokens.
+This blog will focus on the second direction, explaining the available techniques to encode long context.
 
 ## Long context in encoding
 
@@ -92,7 +80,7 @@ Recently, many progress has made to encode the long context efficiently:
 <div class="row mt-3" style="background-color: black;">
     <div class="col-sm mt-3 mt-md-0">
         <figure style="width: 90%; margin: 0 auto;">
-            {% include figure.liquid loading="eager" path="assets/img/latechuncking.jpg" class="img-fluid rounded z-depth-1" %}
+            {% include figure.liquid loading="eager" path="assets/img/latechuncking.png" class="img-fluid rounded z-depth-1" %}
             <figcaption class="text-white text-center mt-2">
                 An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI 
                 <a href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/" class="text-white">blog</a>
