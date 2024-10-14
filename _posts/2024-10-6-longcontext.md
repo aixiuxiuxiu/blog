@@ -28,8 +28,8 @@ toc:
     # subsections:
     #   - name: Example Child Subsection 1
     #   - name: Example Child Subsection 2
-  - name: Long context in encoding
-  - name: Long context in evaluation
+  - name: Naive Chuncking
+  - name: Late chuncking 
 
 # Below is an example of injecting additional post-specific styles.
 # If you use this post as a template, delete this _styles block.
@@ -52,9 +52,9 @@ _styles: >
 
 ## Why long context is so hard?
 
-Long contexts present several challenges for large language models (LLMs), as most current models have limited context length. For instance, BERT-based models typically have a context length of 512 tokens—if a sequence exceeds 512 tokens, only part of it is encoded. In contrast, standard GPT-3 models handle around 2,048 tokens, while GPT-4 offers two variants: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). However, many tasks involving LLMs require handling documents that far exceed these limits. For example, building a retrieval-augmented generation (RAG) system requires integrating internal knowledge bases, which often involves encoding multi-page documents. Likewise, chat applications may need to include background context (e.g., previous conversations) spanning several pages.
+Most of current large language models (LLMs) have limited context length. For instance, BERT-based models typically have a context length of 512 tokens—if a sequence exceeds 512 tokens, only part of it is encoded. In contrast, standard GPT-3 models handle around 2,048 tokens, while GPT-4 offers two variants: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). However, many tasks involving LLMs require handling documents that far exceed these limits. For example, building a retrieval-augmented generation (RAG) system requires integrating internal knowledge bases, which often involves encoding multi-page documents. Likewise, chat applications may need to include background context (e.g., previous conversations) spanning several pages.
 
-In addressing this challenge, two main research directions have emerged. The first is to develop models with longer context lengths, as illustrated by the table showing the evolution of context length across different models. However, this is challenging because most LLMs, such as GPT and BERT, are based on the transformer architecture, which uses a self-attention mechanism. This mechanism compares each token in the input sequence with every other token, leading to quadratic complexity in both memory usage and computational cost.
+In addressing the limits arising from context length, two main research directions have emerged. The first is to develop models with longer context lengths, as illustrated by the table showing the evolution of context length across different models. However, this is challenging because most LLMs, such as GPT and BERT, are based on the transformer architecture, which uses a self-attention mechanism. This mechanism compares each token in the input sequence with every other token, leading to quadratic complexity in both memory usage and computational cost.
 
 | Model      | Context length | Number of English pages* |
 |------------|----------------|--------------------------|
@@ -71,10 +71,17 @@ The second approach involves improving encoding techniques. Encoding all the inf
 
 This blog will focus on the second direction, explaining the available techniques to encode long context.
 
-## Long context in encoding
+## Naive Chuncking
 
-Recently, many progress has made to encode the long context efficiently: 
-- Navive chuncking: The naive encoding approach (as seen on the left side of the image below) involves using sentences, paragraphs, or maximum length limits to split the text a priori. Afterward, an embedding model is repetitively applied to these resulting chunks. To generate a single embedding for each chunk, many embedding models use mean pooling on these token-level embeddings to output a single embedding vector. See an example from [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs)
+
+The naive encoding approach (as seen on the left side of the image below) involves splitting the text a priori using sentences, paragraphs, or maximum length limits. Afterward, an embedding model is applied to each resulting chunk. To generate a single embedding for each chunk, many models use mean pooling on token-level embeddings, producing a single embedding vector. You can see an example in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs).
+
+In some cases, it may be useful to split chunks at paragraph or sentence boundaries to better preserve the meaning of the text.
+
+Another approach is to chunk the text with some overlap between the segments, a strategy implemented by Langchain.
+
+
+## Late chuncking from Jina AI
 - Late chuncking Jina AI <d-cite key="gunther2024late"></d-cite>: first applies the transformer layer of the embedding model to the entire text or as much of it as possible. This generates a sequence of vector representations for each token that encompasses textual information from the entire text. Subsequently, mean pooling is applied to each chunk of this sequence of token vectors, yielding embeddings for each chunk that consider the entire text's context. Unlike the naive encoding approach, which generates independent and identically distributed (i.i.d.) chunk embeddings, late chunking creates a set of chunk embeddings where each one is "conditioned on" the previous ones, thereby encoding more contextual information for each chunk.
 
 <div class="row mt-3" style="background-color: black;">
