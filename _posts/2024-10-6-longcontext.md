@@ -80,7 +80,7 @@ In some cases, it may be useful to split chunks at paragraph or sentence boundar
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/splitter.ipynb' | relative_url %}
-{% capture notebook_exists %}{% file_exists assets/jupyter/pdfplumber_old.ipynb %}{% endcapture %}
+{% capture notebook_exists %}{% file_exists assets/jupyter/splitter.ipynb %}{% endcapture %}
 {% if notebook_exists == 'true' %}
   {% jupyter_notebook jupyter_path %}
 {% else %}
@@ -88,7 +88,7 @@ In some cases, it may be useful to split chunks at paragraph or sentence boundar
 {% endif %}
 {:/nomarkdown}
 <div class="caption">
-chuncking with sentence boundaries
+Example of chunking with sentence boundaries
 </div>
 
 
