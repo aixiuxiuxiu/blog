@@ -527,6 +527,8 @@ div#notebook {
   width: 980px;
   margin-right: auto;
   margin-left: auto;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  white-space: nowrap; /* Prevent line breaks */
 }
 
 div#ipython-main-app.container {
@@ -535,13 +537,25 @@ div#ipython-main-app.container {
   margin-left: auto;
   margin-right: auto;
   margin-left: auto;
+  overflow-x: auto; /* Enable horizontal scrolling */
 }
 
 .container {
   width: 980px;
   margin-right: auto;
   margin-left: auto;
+  overflow-x: auto; /* Enable horizontal scrolling */
 }
+
+/* Scrollbar styling (optional for aesthetic reasons) */
+::-webkit-scrollbar {
+  height: 10px; /* Adjust the height of the horizontal scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1e1e; /* Scrollbar track color */
+}
+
 
 div#menubar-container {
   width: 100%;
