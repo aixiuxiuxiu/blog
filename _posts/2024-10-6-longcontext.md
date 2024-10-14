@@ -2,7 +2,7 @@
 layout: distill
 title: How to Encode Long Text Using Large Language Models? 
 #description: an example of a distill-style blog post and main elements
-tags: LLM evaluation
+tags: LLM Evaluation
 #giscus_comments: true
 date: 2024-10-07
 featured: false
@@ -76,9 +76,8 @@ This blog will focus on the second direction, explaining the available technique
 
 The naive encoding approach (as seen on the left side of the image below) involves splitting the text a priori using sentences, paragraphs, or maximum length limits. Afterward, an embedding model is applied to each resulting chunk. To generate a single embedding for each chunk, many models use mean pooling on token-level embeddings, producing a single embedding vector. You can see an example in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs).
 
-In some cases, it may be useful to split chunks at paragraph or sentence boundaries to better preserve the meaning of the text.
+In some cases, it may be useful to split chunks at paragraph or sentence boundaries to better preserve the meaning of the text. This method has been implemented in Langchain using the function `RecursiveCharacterTextSplitter`. Often, we can also chunk the text with some overlap between the segments to preserve context before and after each chunk.
 
-Another approach is to chunk the text with some overlap between the segments, a strategy implemented by Langchain.
 
 
 ## Late chuncking from Jina AI
