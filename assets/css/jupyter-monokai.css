@@ -547,14 +547,6 @@ div#ipython-main-app.container {
   overflow-x: auto; /* Enable horizontal scrolling */
 }
 
-/* Scrollbar styling (optional for aesthetic reasons) */
-::-webkit-scrollbar {
-  height: 10px; /* Adjust the height of the horizontal scrollbar */
-}
-
-::-webkit-scrollbar-track {
-  background: #1e1e1e; /* Scrollbar track color */
-}
 
 
 div#menubar-container {
