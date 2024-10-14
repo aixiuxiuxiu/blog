@@ -76,7 +76,7 @@ This blog will focus on the second direction, explaining the available technique
 
 The naive encoding approach (as seen on the left side of the image below) involves splitting the text a priori using sentences, paragraphs, or maximum length limits. Afterward, an embedding model is applied to each resulting chunk. To generate a single embedding for each chunk, many models use mean pooling on token-level embeddings, producing a single embedding vector. You can see an example in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs).
 
-In some cases, it may be useful to split chunks at paragraph or sentence boundaries to better preserve the meaning of the text. This method has been implemented in Langchain using the function `RecursiveCharacterTextSplitter`. Often, we can also chunk the text with some overlap between the segments to preserve context before and after each chunk.
+In some cases, it may be useful to split chunks at paragraph or sentence boundaries to better preserve the meaning of the text. This method has been implemented in Langchain using the function `RecursiveCharacterTextSplitter`. 
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/splitter.ipynb' | relative_url %}
@@ -91,6 +91,7 @@ In some cases, it may be useful to split chunks at paragraph or sentence boundar
 Example of chunking with sentence boundaries
 </div>
 
+As a result, each chunk falls within the length limits of the LLM. Then, the chunks are encoded into embeddings, and combined using mean pooling (by averaging the embeddings of all the chunks).
 
 ## Late Chuncking from Jina AI
 - Late chuncking Jina AI <d-cite key="gunther2024late"></d-cite>: first applies the transformer layer of the embedding model to the entire text or as much of it as possible. This generates a sequence of vector representations for each token that encompasses textual information from the entire text. Subsequently, mean pooling is applied to each chunk of this sequence of token vectors, yielding embeddings for each chunk that consider the entire text's context. Unlike the naive encoding approach, which generates independent and identically distributed (i.i.d.) chunk embeddings, late chunking creates a set of chunk embeddings where each one is "conditioned on" the previous ones, thereby encoding more contextual information for each chunk.
