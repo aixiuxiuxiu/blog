@@ -117,5 +117,8 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
 
 ## Encoding Long Contexts in Document Classification
 
+Unlike RAG, which relies on retrieving relevant pieces of information, the model needs to be fine-tuned on labeled data for specific classification tasks. In classification, after obtaining embeddings from the chunks, you can add a classifier layer (typically a fully connected layer) on top of the aggregated global embedding and fine-tune the entire model on your classification dataset.
 
- <d-cite key="dubois2024length"></d-cite>
+If the document exceeds the model’s context length, several techniques are available to handle long inputs, including hierarchical encoding.
+
+### Hierarchical Encoding
