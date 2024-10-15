@@ -25,11 +25,11 @@ bibliography: 2024-10-6-longcontext.bib
 toc:
   - name: Why Long Context Is So Hard?
     # if a section has subsections, you can add them as follows:
-  - name: Long Context for RAG
+  - name: Encoding Long Contexts in Retrieval-Augmented Generation (RAG)
     subsections:
       - name: Naive Chuncking
       - name: Late Chuncking 
-  - name: Long Context for Classification
+  - name: Encoding Long Contexts in Document Classification
 
 # Below is an example of injecting additional post-specific styles.
 # If you use this post as a template, delete this _styles block.
@@ -69,9 +69,9 @@ In addressing the limits arising from context length, two main research directio
 The second approach involves improving encoding techniques. Encoding all the information from a multi-page document into a single embedding vector is difficult, if not impossible. Although we have a model with a long context window, trying to encode everything from multiple pages into one vector may result in the loss of important information. Alternatively, chunking long texts into smaller segments while maintaining dependencies between them offers a more viable approach.
 
 
-This blog will focus on the second direction, explaining the available techniques to encode long context.
+This blog will focus on the second approach, discussing available techniques for encoding long contexts in two different tasks: one in building Retrieval-Augmented Generation (RAG) and the other in document classification.
 
-## Long Context for RAG
+## Encoding Long Contexts in RAG
 
 ### Naive Chuncking
 
@@ -115,6 +115,7 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
 
 
 
-## Long Context for Classification
+## Encoding Long Contexts in Document Classification
+
 
  <d-cite key="dubois2024length"></d-cite>
