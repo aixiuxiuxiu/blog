@@ -23,13 +23,13 @@ bibliography: 2024-10-6-longcontext.bib
 #   - we may want to automate TOC generation in the future using
 #     jekyll-toc plugin (https://github.com/toshimaru/jekyll-toc).
 toc:
-  - name: Why long context is so hard?
+  - name: Why Long Context Is So Hard?
     # if a section has subsections, you can add them as follows:
-    # subsections:
-    #   - name: Example Child Subsection 1
-    #   - name: Example Child Subsection 2
-  - name: Naive Chuncking
-  - name: Late Chuncking 
+  - name: Long Context for RAG
+    subsections:
+      - name: Naive Chuncking
+      - name: Late Chuncking 
+  - name: Long Context for Classification
 
 # Below is an example of injecting additional post-specific styles.
 # If you use this post as a template, delete this _styles block.
@@ -71,7 +71,9 @@ The second approach involves improving encoding techniques. Encoding all the inf
 
 This blog will focus on the second direction, explaining the available techniques to encode long context.
 
-## Naive Chuncking
+## Long Context for RAG
+
+### Naive Chuncking
 
 
 The naive encoding approach (as seen on the left side of the image below) involves splitting the text a priori using sentences, paragraphs, or maximum length limits. Afterward, an embedding model is applied to each resulting chunk. To generate a single embedding for each chunk, many models use mean pooling on token-level embeddings, producing a single embedding vector. You can see an example in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs).
@@ -95,7 +97,7 @@ As a result, each chunk falls within the length limits of the LLM. Then, the chu
 
 Naive chunking allows encoding the entire sequence without cutting until the maximum context window is reached. However, because it encodes each chunk independently, it breaks the dependencies between chunks. This means that each chunk is treated as an independent element, without considering the context before or after it.
 
-## Late Chuncking 
+### Late Chuncking 
 
 Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, addresses the contextual issue. It first applies the transformer layer of the embedding model to the entire text, or as much of it as possible. This generates a sequence of vector representations for each token, encompassing textual information from the entire text. Subsequently, mean pooling is applied to each chunk of this sequence of token vectors, yielding embeddings that consider the context of the entire text. Unlike the naive encoding approach, which generates independent and identically distributed (i.i.d.) chunk embeddings, late chunking creates chunk embeddings that are "conditioned on" the previous ones, thereby encoding more contextual information for each chunk.
 
@@ -111,8 +113,8 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
     </div>
 </div>
 
-## ColBERT’s Late Interaction <d-cite key="santhanam2021colbertv2"></d-cite>
 
-## Long context in evaluation
+
+## Long Context for Classification
 
  <d-cite key="dubois2024length"></d-cite>
