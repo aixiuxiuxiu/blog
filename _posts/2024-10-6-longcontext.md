@@ -2,7 +2,7 @@
 layout: distill
 title: How to Encode Long Text Using Large Language Models? 
 #description: an example of a distill-style blog post and main elements
-tags: LLM Evaluation
+tags: RAG Classification
 #giscus_comments: true
 date: 2024-10-07
 featured: false
@@ -120,11 +120,15 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
 
 Unlike RAG, which relies on retrieving relevant pieces of information, the model needs to be fine-tuned on labeled data for specific classification tasks. In classification, after obtaining embeddings from the chunks, you can add a classifier layer (typically a fully connected layer) on top of the aggregated global embedding and fine-tune the entire model on your classification dataset.
 
-If you're working with a BERT-based classification model where the context window is 512 tokens, but your document has more than 5,000 tokens, what you could do in such case? Several ways are available to handle this, like using hierarchical encoding, sliding window approaches, or trying models like Longformer or BigBird that are designed to handle longer contexts.
+If you're working with a BERT-based classification model where the context window is 512 tokens, but your document has more than 5,000 tokens, what you could do in such case? Several ways are available to handle this:
 
 
-<d-cite key='park2022efficient'></d-cite>
-- BERT truncates long documents to 512 tokens and uses a fully-connected layer on the [CLS] token, serving as a competitive baseline for long document classification.
-- Longformer processes up to 4,096 tokens with efficient self-attention and outperforms RoBERTa on small binary classification datasets.
-- ToBERT takes a hierarchical approach by dividing documents into 200-token chunks and applying a Transformer over BERT-based chunk representations, performing well on spoken conversation datasets.
-- CogLTX selects key sentences from long documents using two BERT models, based on the idea that a few key sentences are sufficient for classification tasks, and has outperformed ToBERT in some comparisons.
+- **Document Truncation**: The simplest approach involves fine-tuning BERT by truncating long documents to the first 512 tokens (this can be done by setting `truncation=True` in the tokenizer function).
+- **Longformer**: <d-cite key='beltagy2020longformer'></d-cite> proposed Longformer, which is designed to process longer input sequences using an efficient self-attention mechanism that scales linearly with the input length. Unlike BERT, which can handle up to 512 tokens, Longformer can process up to 4,096 tokens.
+- **Hierarchical encoding** It (<d-cite key='pappagari2019hierarchical'></d-cite> ) divides long documents into smaller chunks of 200 tokens and uses a Transformer layer over BERT-based chunk representations.
+- **Cognize LongTeXts** It (<d-cite key='ding2020cogltx'></d-cite> ) jointly trains
+two BERT (or RoBERTa) models to select key sentences from long documents for various tasks including text classification. The underlying idea that a few key sentences are sufficient for a given task
+has been explored for question answering.
+
+<d-cite key='park2022efficient'></d-cite> has evaluated different models, and show
+show that more complex models often fail to outperform simple baselines and yield inconsistent performance across datasets. 
