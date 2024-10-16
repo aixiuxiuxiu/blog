@@ -1,7 +1,7 @@
 ---
 layout: distill
 title: How to Encode Long Text Using Large Language Models? 
-#description: an example of a distill-style blog post and main elements
+description: This blog explores methods for encoding long contexts using large language models, focusing on techniques for Retrieval-Augmented Generation (RAG) and document classification.
 tags: RAG Classification
 #giscus_comments: true
 date: 2024-10-07
