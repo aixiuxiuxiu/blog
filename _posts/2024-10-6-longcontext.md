@@ -54,7 +54,6 @@ _styles: >
 
 Most of current large language models (LLMs) have limited context length. For instance, BERT-based models typically have a context length of 512 tokens—if a sequence exceeds 512 tokens, only part of it is encoded. In contrast, standard GPT-3 models handle around 2,048 tokens, while GPT-4 offers two variants: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). However, many tasks involving LLMs require handling documents that far exceed these limits. For example, building a retrieval-augmented generation (RAG) system requires integrating internal knowledge bases, which often involves encoding multi-page documents. Likewise, chat applications may need to include background context (e.g., previous conversations) spanning several pages. Additionally, tasks like text classification may involve encoding texts containing thousands of tokens.
 
-In addressing the limits arising from context length, two main research directions have emerged. The first is to develop models with longer context lengths, as illustrated by the table showing the evolution of context length across different models. However, this is challenging because most LLMs, such as GPT and BERT, are based on the transformer architecture, which uses a self-attention mechanism. This mechanism compares each token in the input sequence with every other token, leading to quadratic complexity in both memory usage and computational cost.
 
 | Model      | Context length | Number of English pages* |
 |------------|----------------|--------------------------|
@@ -65,6 +64,8 @@ In addressing the limits arising from context length, two main research directio
 | Llama 2    | 4,096          | 6                        |
 
 *Context Length Comparison (*Assuming 500 words per page.) 
+
+To overcome the limitations posed by context length, two primary research directions have emerged. The first focuses on developing models capable of handling longer contexts, which is challenging because most large language models (LLMs), such as GPT and BERT, rely on the transformer architecture and its self-attention mechanism. This mechanism compares each token in the input sequence with every other token, leading to quadratic complexity in both memory usage and computational cost. Some research has explored fine-tuning LLMs with longer context inputs  (<d-cite key='dubey2024llama'></d-cite> , <d-cite key='tworkowski2024focused'></d-cite>), while others have used position extrapolation or interpolation, building on relative rotary positional embeddings   (<d-cite key='su2024roformer'></d-cite>) , to extend input lengths beyond the model’s original training limits (<d-cite key='press2021train'></d-cite> , <d-cite key='chen2023extending'></d-cite>).
 
 The second approach involves improving encoding techniques. Encoding all the information from a multi-page document into a single embedding vector is difficult, if not impossible. Although we have a model with a long context window, trying to encode everything from multiple pages into one vector may result in the loss of important information. Alternatively, chunking long texts into smaller segments while maintaining dependencies between them offers a more viable approach.
 
