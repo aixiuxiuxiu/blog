@@ -124,4 +124,7 @@ If you're working with a BERT-based classification model where the context windo
 
 
 <d-cite key='park2022efficient'></d-cite>
-### Hierarchical Encoding
+- BERT truncates long documents to 512 tokens and uses a fully-connected layer on the [CLS] token, serving as a competitive baseline for long document classification.
+- Longformer processes up to 4,096 tokens with efficient self-attention and outperforms RoBERTa on small binary classification datasets.
+- ToBERT takes a hierarchical approach by dividing documents into 200-token chunks and applying a Transformer over BERT-based chunk representations, performing well on spoken conversation datasets.
+- CogLTX selects key sentences from long documents using two BERT models, based on the idea that a few key sentences are sufficient for classification tasks, and has outperformed ToBERT in some comparisons.
