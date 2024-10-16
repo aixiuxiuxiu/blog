@@ -31,6 +31,12 @@ toc:
       - name: Late Chuncking 
   - name: Encoding Long Contexts in Document Classification
 
+    subsections:
+      - name: Document Truncation
+      - name: Longformer
+      - name: Hierarchical Encoding
+      - name: Cognize LongTeXts
+
 # Below is an example of injecting additional post-specific styles.
 # If you use this post as a template, delete this _styles block.
 _styles: >
@@ -125,7 +131,7 @@ If you're working with a BERT-based classification model where the context windo
 
 - **Document Truncation**: The simplest approach involves fine-tuning BERT by truncating long documents to the first 512 tokens (this can be done by setting `truncation=True` in the tokenizer function).
 - **Longformer** <d-cite key='beltagy2020longformer'></d-cite> : It is designed to process longer input sequences using an efficient self-attention mechanism that scales linearly with the input length. Unlike BERT, which can handle up to 512 tokens, Longformer can process up to 4,096 tokens.
-- **Hierarchical encoding** <d-cite key='pappagari2019hierarchical'></d-cite>: It divides long documents into smaller chunks of 200 tokens and uses a Transformer layer over BERT-based chunk representations (I implemented it under the Github folder).
+- **Hierarchical Encoding** <d-cite key='pappagari2019hierarchical'></d-cite>: It divides long documents into smaller chunks of 200 tokens and uses a Transformer layer over BERT-based chunk representations (I implemented it under the Github folder).
 - **Cognize LongTeXts** <d-cite key='ding2020cogltx'></d-cite>: In this model,  two BERT (or RoBERTa) models are jointly trained to select key sentences from long documents for various tasks including text classification. The underlying idea that a few key sentences are sufficient for a given task has been explored for question answering.
 
 However, in this recent paper <d-cite key='park2022efficient'></d-cite>, they evaluate different models and show that more complex models often fail to outperform simple baselines and yield inconsistent performance across datasets.
