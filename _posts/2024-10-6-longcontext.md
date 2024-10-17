@@ -110,8 +110,9 @@ Naive chunking allows encoding the entire sequence without cutting until the max
 ### Late Chuncking 
 
 Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, addresses the contextual issue. It first applies the transformer layer of the embedding model to the entire text, or as much of it as possible. This generates a sequence of vector representations for each token, encompassing textual information from the entire text. Subsequently, mean pooling is applied to each chunk of this sequence of token vectors, yielding embeddings that consider the context of the entire text. Unlike the naive encoding approach, which generates independent and identically distributed (i.i.d.) chunk embeddings, late chunking creates chunk embeddings that are "conditioned on" the previous ones, thereby encoding more contextual information for each chunk.
+It is worth noting that effective late chunking depends on embedding models with long-context capabilities a priori. In their example, they utilize the[jina-embeddings-v2-base-en](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/), which can handle up to 8,192 tokens—roughly the equivalent of ten standard pages of text.
 
-It's worthy noting that to effectively apply late chunking, it  need long-context embedding models like (jina-embeddings-v2-base-en)[https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/], which support up to 8192 tokens—roughly ten standard pages of text. 
+
 
 
 <div class="row mt-3" style="background-color: black;">
