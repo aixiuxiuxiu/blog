@@ -85,10 +85,11 @@ This blog will focus on the second approach, discussing available techniques for
 
 ### Naive Chuncking
 
+The naive encoding approach (illustrated on the left side of the image below) involves splitting the text beforehand and applying an embedding model to each chunk. A common method for generating a single embedding from all chunks is mean pooling on the token-level embeddings ((by averaging the embeddings of all the chunks)). You can find an example of this in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs).
 
-The naive encoding approach (as seen on the left side of the image below) involves splitting the text a priori using sentences, paragraphs, or maximum length limits. Afterward, an embedding model is applied to each resulting chunk. To generate a single embedding for each chunk, many models use mean pooling on token-level embeddings, producing a single embedding vector. You can see an example in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs).
+To split the text, we can use a fixed length, though in some cases, splitting at paragraph or sentence boundaries may better preserve the text's meaning. This approach has been implemented in Langchain via the function `RecursiveCharacterTextSplitter` (see this [blog](https://dev.to/eteimz/understanding-langchains-recursivecharactertextsplitter-2846) for more detailed explanations of this function.)
 
-In some cases, it may be useful to split chunks at paragraph or sentence boundaries to better preserve the meaning of the text. This method has been implemented in Langchain using the function `RecursiveCharacterTextSplitter` (see this [blog](https://dev.to/eteimz/understanding-langchains-recursivecharactertextsplitter-2846) for more detailed explanations of this function.)
+
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/splitter.ipynb' | relative_url %}
@@ -103,22 +104,19 @@ In some cases, it may be useful to split chunks at paragraph or sentence boundar
 Example of chunking with sentence boundaries
 </div>
 
-As a result, each chunk falls within the length limits of the LLM. Then, the chunks are encoded into embeddings, and combined into one using mean pooling (by averaging the embeddings of all the chunks). 
 
-Naive chunking allows encoding the entire sequence without cutting until the maximum context window is reached. However, because it encodes each chunk independently, it breaks the dependencies between chunks. This means that each chunk is treated as an independent element, without considering the context before or after it.
+As a result,  naive chunking allows encoding the entire sequence without cutting until the maximum context window is reached. However, because it encodes each chunk independently, it breaks the dependencies between chunks. This means that each chunk is treated as an independent element, without considering the context before or after it.
 
 ### Late Chuncking 
 
-Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, addresses the contextual issue. It first applies the transformer layer of the embedding model to the entire text, or as much of it as possible. This generates a sequence of vector representations for each token, encompassing textual information from the entire text. Subsequently, mean pooling is applied to each chunk of this sequence of token vectors, yielding embeddings that consider the context of the entire text. Unlike the naive encoding approach, which generates independent and identically distributed (i.i.d.) chunk embeddings, late chunking creates chunk embeddings that are "conditioned on" the previous ones, thereby encoding more contextual information for each chunk.
-
-It is worth noting that effective late chunking depends on embedding models with long-context capabilities a priori. In their example, they utilize the [jina-embeddings-v2-base-en](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/), which can handle up to 8,192 tokens—roughly the equivalent of ten standard pages of text.
+Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, addresses the contextual issue. Their thecnique  involves first processing the entire document with a transformer-based model to produce embeddings for all tokens in the text. Only after the token-level embeddings are generated, the text is divided into chunks, and mean pooling is applied to each chunk’s tokens to create chunk-level embeddings. This ensures that each chunk embedding is informed by the context of the whole document, not just the local text of the chunk.
 
 
 
 
 <div class="row mt-3" style="background-color: black;">
     <div class="col-sm mt-3 mt-md-0">
-        <figure style="width: 90%; margin: 0 auto;">
+        <figure style="width: 90%; margin: 10 auto;">
             {% include figure.liquid loading="eager" path="assets/img/latechuncking.png" class="img-fluid rounded z-depth-1" %}
             <figcaption class="text-white text-center mt-2">
                 An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI 
@@ -128,6 +126,23 @@ It is worth noting that effective late chunking depends on embedding models with
     </div>
 </div>
 
+
+It is worth noting that effective late chunking depends on embedding models with long-context capabilities a priori. In their example, they use the [jina-embeddings-v2-base-en](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/), which can handle up to 8,192 tokens—roughly the equivalent of ten standard pages of text.
+
+
+To evaluate the effectiveness of late chunking, they tested several retrieval benchmarks from BeIR. In all cases, late chunking improved scores over the naive approach, particularly for longer documents, where the performance gap between naive and late chunking increased with document length, demonstrating that late chunking becomes more effective as document length grows.
+
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0">
+        <figure style="width: 60%; margin: 10 auto;">
+            {% include figure.liquid loading="eager" path="assets/img/jina_length.png" class="img-fluid rounded z-depth-1" %}
+            <figcaption class="text-white text-center mt-2">
+                An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI 
+                <a href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/" class="text-white">blog</a>
+            </figcaption>
+        </figure>
+    </div>
+</div>
 
 
 ## Encoding Long Contexts in Document Classification
