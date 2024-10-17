@@ -116,7 +116,7 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
 
 <div class="row mt-3" style="background-color: black;">
     <div class="col-sm mt-3 mt-md-0">
-        <figure style="width: 90%; margin: 10 auto;">
+        <figure style="width: 70%; margin: 10 auto;">
             {% include figure.liquid loading="eager" path="assets/img/latechuncking.png" class="img-fluid rounded z-depth-1" %}
             <figcaption class="text-white text-center mt-2">
                 An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI 
