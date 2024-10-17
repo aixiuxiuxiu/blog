@@ -134,7 +134,7 @@ It is worth noting that effective late chunking depends on embedding models with
 
 Unlike RAG, which relies on retrieving relevant pieces of information, the model needs to be fine-tuned on labeled data for specific classification tasks. In classification, after obtaining embeddings from the chunks, you can add a classifier layer (typically a fully connected layer) on top of the aggregated global embedding and fine-tune the entire model on your classification dataset.
 
-If you're working with a BERT-based classification model where the context window is 512 tokens, but your document has more than 5,000 tokens, what you could do in such case? Several ways are available to handle this:
+If you're working with a BERT-based classification model where the context window is 512 tokens, but your document has more than 5,000 tokens.  what you could do in such case? Several ways are available to handle this:
 
 
 - **Document Truncation**: The simplest approach involves fine-tuning BERT by truncating long documents to the first 512 tokens (this can be done by setting `truncation=True` in the tokenizer function).
