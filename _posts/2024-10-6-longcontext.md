@@ -114,9 +114,9 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
 
 
 
-<div class="row mt-3" style="background-color: black;">
-    <div class="col-sm mt-3 mt-md-0">
-        <figure style="width: 70%; margin: 10 auto;">
+<div class="row mt-3">
+    <div class="col-sm mt-3 mt-md-0 d-flex justify-content-center">
+        <figure style="width: 70%; margin: 0 auto; background-color: black; padding: 10px; text-align: center;">
             {% include figure.liquid loading="eager" path="assets/img/latechuncking.png" class="img-fluid rounded z-depth-1" %}
             <figcaption class="text-white text-center mt-2">
                 An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI 
@@ -126,7 +126,6 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
     </div>
 </div>
 
-
 It is worth noting that effective late chunking depends on embedding models with long-context capabilities a priori. In their example, they use the [jina-embeddings-v2-base-en](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/), which can handle up to 8,192 tokens—roughly the equivalent of ten standard pages of text.
 
 
@@ -134,7 +133,7 @@ To evaluate the effectiveness of late chunking, they tested several retrieval be
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        <figure style="width: 60%; margin: 10 auto;">
+        <figure style="width: 60%; margin: 0 auto;">
             {% include figure.liquid loading="eager" path="assets/img/jina_length.png" class="img-fluid rounded z-depth-1" %}
             <figcaption class="text-white text-center mt-2">
                 An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI 
