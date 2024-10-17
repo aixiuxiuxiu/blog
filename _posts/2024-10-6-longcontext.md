@@ -4,7 +4,7 @@ title: How to Encode Long Text Using Large Language Models?
 description: This blog explores methods for encoding long contexts using large language models, focusing on techniques for Retrieval-Augmented Generation (RAG) and document classification.
 tags: RAG Classification
 #giscus_comments: true
-date: 2024-10-07
+date: 2024-10-17
 featured: false
 anthor: Aixiu An
 
@@ -135,3 +135,5 @@ If you're working with a BERT-based classification model where the context windo
 - **Cognize LongTeXts** <d-cite key='ding2020cogltx'></d-cite>: In this model,  two BERT (or RoBERTa) models are jointly trained to select key sentences from long documents for various tasks including text classification. The underlying idea that a few key sentences are sufficient for a given task has been explored for question answering.
 
 However, in this recent paper <d-cite key='park2022efficient'></d-cite>, they evaluate different models and show that more complex models often fail to outperform simple baselines and yield inconsistent performance across datasets.
+
+New architecture, like the State Space Model (), there seems to be more to understand.

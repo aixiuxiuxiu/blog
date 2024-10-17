@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Optimizing PDF Extraction for Building a Robust RAG
-date: 2024-09-11 00:32:13
+date: 2024-10-17 00:32:13
 tags: RAG Evaluation
 description: This blog presents an experiment illustrating how high-quality PDF extraction can significantly improve RAG performance. It highlights that improving PDF extraction may be just as important as enhancing embedding models.
 categories: sample-posts
