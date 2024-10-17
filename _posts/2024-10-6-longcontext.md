@@ -58,7 +58,7 @@ _styles: >
 
 ## Why long context is so hard?
 
-During the last two years, large language models (LLMs) have made significant progress in extending the limits of context length. For instance, BERT-based models typically have a context length of 512 tokens. In contrast, standard GPT-3 models handle around 2,048 tokens, while GPT-4 offers two variants: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). However, many tasks involving LLMs require handling documents that still far exceed these limits. For example, building a retrieval-augmented generation (RAG) system requires integrating internal knowledge bases, which often involves encoding hundreds of pages of documents. Likewise, chat applications may need to include background context (e.g., previous conversations) spanning several pages. Additionally, tasks like text classification may involve encoding texts containing thousands of tokens.
+Over the last few years, large language models (LLMs) have made significant progress in extending the limits of context length. For example, BERT-based models typically support a context length of 512 tokens, while standard GPT-3 models have evolved to handle 2,048 tokens. GPT-4 offers two variants: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens).  However, many tasks involving LLMs require handling documents that still far exceed these limits. For example, building a retrieval-augmented generation (RAG) system requires integrating internal knowledge bases, which often involves encoding hundreds of pages of documents. Likewise, chat applications may need to include background context (e.g., previous conversations) spanning several pages. Additionally, tasks like text classification may involve encoding texts containing thousands of tokens.
 
 
 
@@ -110,7 +110,8 @@ Naive chunking allows encoding the entire sequence without cutting until the max
 ### Late Chuncking 
 
 Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, addresses the contextual issue. It first applies the transformer layer of the embedding model to the entire text, or as much of it as possible. This generates a sequence of vector representations for each token, encompassing textual information from the entire text. Subsequently, mean pooling is applied to each chunk of this sequence of token vectors, yielding embeddings that consider the context of the entire text. Unlike the naive encoding approach, which generates independent and identically distributed (i.i.d.) chunk embeddings, late chunking creates chunk embeddings that are "conditioned on" the previous ones, thereby encoding more contextual information for each chunk.
-It is worth noting that effective late chunking depends on embedding models with long-context capabilities a priori. In their example, they utilize the[jina-embeddings-v2-base-en](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/), which can handle up to 8,192 tokens—roughly the equivalent of ten standard pages of text.
+
+It is worth noting that effective late chunking depends on embedding models with long-context capabilities a priori. In their example, they utilize the [jina-embeddings-v2-base-en](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/), which can handle up to 8,192 tokens—roughly the equivalent of ten standard pages of text.
 
 
 
