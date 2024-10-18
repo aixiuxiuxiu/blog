@@ -124,8 +124,8 @@ To evaluate the effectiveness of late chunking, they tested several retrieval ta
         <figure style="width: 60%; margin: 0 auto;">
             {% include figure.liquid loading="eager" path="assets/img/jina_length.png" class="img-fluid rounded z-depth-1" %}
             <figcaption class="text-white text-center mt-2">
-                An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI 
-                <a href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/" class="text-white">blog</a>
+                Late chunking's improvement over naive chunking in  retrieval tasks is correlated with the avg. document length, from Jina AI 
+                <a href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/">blog</a>
             </figcaption>
         </figure>
     </div>
