@@ -66,7 +66,7 @@ The second direction focuses on improving encoding techniques. Encoding all the 
 
 
 
-This blog will focus on the second approach, discussing available techniques for encoding long contexts in two different tasks: one in building Retrieval-Augmented Generation (RAG) and the other in document classification.
+This blog will focus on the second direction, discussing available techniques for encoding long contexts in two different tasks: one in building Retrieval-Augmented Generation (RAG) and the other in document classification.
 
 ## Encoding Long Contexts in RAG
 
