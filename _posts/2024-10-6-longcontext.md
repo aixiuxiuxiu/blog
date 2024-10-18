@@ -117,7 +117,7 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
 
 It is important to note that effective late chunking relies on embedding models with long-context capabilities. In their example, they use [jina-embeddings-v2-base-en](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/), which can handle up to 8,192 tokens—roughly the equivalent of ten standard pages of text. Recently, other embeddings have become available, such as [voyage-3](https://blog.voyageai.com/2024/09/18/voyage-3/), which supports up to 32,000 tokens.
 
-To evaluate the effectiveness of late chunking, they tested several retrieval benchmarks from BeIR. In all cases, late chunking improved scores over the naive approach, particularly for longer documents, where the performance gap between naive and late chunking increased with document length, demonstrating that late chunking becomes more effective as document length grows.
+To evaluate the effectiveness of late chunking, they tested several retrieval tasks from the [BeIR  benchmark](https://github.com/beir-cellar/beir). In all cases, late chunking outperformed the naive approach, particularly for longer documents, where the performance gap between the two methods increased with document length. This demonstrates that late chunking becomes more effective as document length grows.
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
