@@ -123,7 +123,7 @@ To evaluate the effectiveness of late chunking, they tested several retrieval ta
     <div class="col-sm mt-3 mt-md-0">
         <figure style="width: 60%; margin: 0 auto;">
             {% include figure.liquid loading="eager" path="assets/img/jina_length.png" class="img-fluid rounded z-depth-1" %}
-            <figcaption class="text-black text-center mt-2" style="color: black; width: 100%;">
+            <figcaption class="text-black text-center mt-2" style="color: black; width: 130%;">
                 Late chunking's improvement over naive chunking in retrieval tasks is correlated with the avg. document length, from Jina AI 
                 <a href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/">blog</a>
             </figcaption>
@@ -147,3 +147,5 @@ If you're working with a BERT-based classification model where the context windo
 However, in this recent paper <d-cite key='park2022efficient'></d-cite>, they evaluate different models and show that more complex models often fail to outperform simple baselines and yield inconsistent performance across datasets.
 
 As mentioned above, the context limitation arises from the transformer architecture. Some research has focused on developing new architectures, such as the State Space Model (SSM). However, there is still limited understanding of how these models can improve tasks like RAG or classification.
+
+#### Acknowledgment
