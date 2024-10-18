@@ -106,7 +106,7 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0 d-flex justify-content-center">
         <figure style="width: 70%; margin: 0 auto; background-color: black; padding: 10px; text-align: center;">
-            {% include figure.liquid loading="eager" path="assets/img/latechunking.png" class="img-fluid rounded z-depth-1" %}
+            {% include figure.liquid loading="eager" path="assets/img/latechuncking.png" class="img-fluid rounded z-depth-1" %}
             <figcaption class="text-white text-center mt-2">
                 An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI 
                 <a href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/" class="text-white">blog</a>
