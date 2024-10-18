@@ -146,4 +146,4 @@ If you're working with a BERT-based classification model where the context windo
 
 However, in this recent paper <d-cite key='park2022efficient'></d-cite>, they evaluate different models and show that more complex models often fail to outperform simple baselines and yield inconsistent performance across datasets.
 
-New architecture, like the State Space Model (), there seems to be more to understand.
+As mentioned above, the context limitation arises from the transformer architecture. Some research has focused on developing new architectures, such as the State Space Model (SSM). However, there is still limited understanding of how these models can improve tasks like RAG or classification.
