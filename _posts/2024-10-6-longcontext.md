@@ -25,7 +25,7 @@ bibliography: 2024-10-6-longcontext.bib
 toc:
   - name: Why Long Context Is So Hard?
     # if a section has subsections, you can add them as follows:
-  - name: Encoding Long Contexts in Retrieval-Augmented Generation (RAG)
+  - name: Encoding Long Contexts in RAG
     subsections:
       - name: Naive chunking
       - name: Late chunking 
@@ -56,7 +56,7 @@ _styles: >
   }
 ---
 
-## Why long context is so hard?
+## Why Long Context Is So Hard?
 
 Over the past few years, large language models (LLMs) have made remarkable progress in extending context length limits. For example, BERT-based models typically support up to 512 tokens, while standard GPT-3 models can handle 2,048 tokens. GPT-4 offers two configurations: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). Recently, Gemmi announced a 2 million-token context window for Gemini 1.5 Pro. However, using models with larger context windows does not necessarily lead to better performance. I hope this blog helps unravel some of the myths about long contexts and explains some current solutions to address this challenge.
 
