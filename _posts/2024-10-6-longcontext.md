@@ -27,8 +27,8 @@ toc:
     # if a section has subsections, you can add them as follows:
   - name: Encoding Long Contexts in Retrieval-Augmented Generation (RAG)
     subsections:
-      - name: Naive Chuncking
-      - name: Late Chuncking 
+      - name: Naive chunking
+      - name: Late chunking 
   - name: Encoding Long Contexts in Document Classification
 
     subsections:
@@ -58,28 +58,8 @@ _styles: >
 
 ## Why long context is so hard?
 
-Over the past few years, large language models (LLMs) have made remarkable strides in extending context length limits. For instance, BERT-based models typically support up to 512 tokens, while standard GPT-3 models can handle 2,048 tokens. GPT-4 offers two configurations: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). Recently, Gemmi announced a 2 million-token context window for Gemini 1.5 Pro. However, using models with the largest context window does not necessarily imply a boost in performance. I hope this blog helps unravel some of the mysteries surrounding long contexts and introduces some new techniques on the market to address this challenge.
+Over the past few years, large language models (LLMs) have made remarkable progress in extending context length limits. For instance, BERT-based models typically support up to 512 tokens, while standard GPT-3 models can handle 2,048 tokens. GPT-4 offers two configurations: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). Recently, Gemmi announced a 2 million-token context window for Gemini 1.5 Pro. However, using models with the largest context window does not necessarily imply a boost in performance. I hope this blog helps unravel some of the mysteries surrounding long contexts and explains some new techniques on the market to address this challenge.
 
- <!---
-Furthermore, many occasion, we need to fine tune a model to do some task, like classification. It becomes impossible of fine tune such models
-
-
-However, many tasks involving LLMs require handling documents that still far exceed these limits. For example, building a retrieval-augmented generation (RAG) system requires integrating internal knowledge bases, which often involves encoding hundreds of pages of documents. Likewise, chat applications may need to include background context (e.g., previous conversations) spanning several pages. Additionally, tasks like text classification may involve encoding texts containing thousands of tokens.
-
-
-
-
-| Model      | Context length | Number of English pages* |
-|------------|----------------|--------------------------|
-| GPT 3.5    | 4,096          | 6                        |
-| GPT 4      | 8,192          | 12                       |
-| GPT 4-32k  | 32,768         | 49                       |
-| Llama 1    | 2,048          | 3                        |
-| Llama 2    | 4,096          | 6                        |
-
-*Context Length Comparison (*Assuming 500 words per page.) 
-
- --->
 
 The limits of context window stems from the limits of transfomer architecture itself. Most current LLMs, such as GPT and LLama, rely on the transformer architecture and its self-attention mechanism. This mechanism compares each token in the input sequence with every other token, resulting in quadratic complexity in both memory usage and computational cost To overcome the limitations imposed by context length, two primary research directions have emerged. The first one seeks to extend the limits of context window. Some research has explored fine-tuning LLMs with longer context inputs (<d-cite key='dubey2024llama'></d-cite>, <d-cite key='tworkowski2024focused'></d-cite>), while others have used position extrapolation or interpolation, building on relative rotary positional embeddings (<d-cite key='su2024roformer'></d-cite>) to extend input lengths beyond the model’s original training limits (<d-cite key='press2021train'></d-cite>, <d-cite key='chen2023extending'></d-cite>).
 
@@ -91,9 +71,11 @@ This blog will focus on the second approach, discussing available techniques for
 
 ## Encoding Long Contexts in RAG
 
-### Naive Chuncking
+Building a RAG system requires integrating internal knowledge bases, which often involves encoding hundreds of pages of documents. Efficiently encoding these documents and facilitating retrieval and generation afterward remain core challenges. Here, I will explain two encoding techniques: naive chunking and late chunking.
 
-The naive encoding approach (illustrated on the left side of the image below) involves splitting the text beforehand and applying an embedding model to each chunk. A common method for generating a single embedding from all chunks is mean pooling on the token-level embeddings ((by averaging the embeddings of all the chunks)). You can find an example of this in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs).
+### Naive chunking
+
+The naive encoding approach (illustrated on the left side of the image below) involves splitting the text beforehand and applying an embedding model to each chunk. A common method for generating a single embedding from all chunks is mean pooling on the token-level embeddings (by averaging the embeddings of all the chunks). You can find an example of this in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs).
 
 To split the text, we can use a fixed length, though in some cases, splitting at paragraph or sentence boundaries may better preserve the text's meaning. This approach has been implemented in Langchain via the function `RecursiveCharacterTextSplitter` (see this [blog](https://dev.to/eteimz/understanding-langchains-recursivecharactertextsplitter-2846) for more detailed explanations of this function.)
 
@@ -115,7 +97,7 @@ Example of chunking with sentence boundaries
 
 As a result,  naive chunking allows encoding the entire sequence without cutting until the maximum context window is reached. However, because it encodes each chunk independently, it breaks the dependencies between chunks. This means that each chunk is treated as an independent element, without considering the context before or after it.
 
-### Late Chuncking 
+### Late chunking 
 
 Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, addresses the contextual issue. Their thecnique  involves first processing the entire document with a transformer-based model to produce embeddings for all tokens in the text. Only after the token-level embeddings are generated, the text is divided into chunks, and mean pooling is applied to each chunk’s tokens to create chunk-level embeddings. This ensures that each chunk embedding is informed by the context of the whole document, not just the local text of the chunk.
 
@@ -125,7 +107,7 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0 d-flex justify-content-center">
         <figure style="width: 70%; margin: 0 auto; background-color: black; padding: 10px; text-align: center;">
-            {% include figure.liquid loading="eager" path="assets/img/latechuncking.png" class="img-fluid rounded z-depth-1" %}
+            {% include figure.liquid loading="eager" path="assets/img/latechunking.png" class="img-fluid rounded z-depth-1" %}
             <figcaption class="text-white text-center mt-2">
                 An illustration of the naive chunking strategy (left) and the late chunking strategy (right), from Jina AI 
                 <a href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/" class="text-white">blog</a>
