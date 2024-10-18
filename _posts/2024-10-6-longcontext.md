@@ -74,9 +74,12 @@ Building a RAG system requires integrating internal knowledge bases, which often
 
 ### Naive chunking
 
-The naive encoding approach (illustrated on the left side of the image below) involves splitting the text beforehand and applying an embedding model to each chunk. A common method for generating a single embedding from all chunks is mean pooling on the token-level embeddings (by averaging the embeddings of all the chunks). You can find an example of this in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs).
+The naive encoding approach (shown on the left side of the image below) involves splitting the text into chunks beforehand and applying an embedding model to each chunk. A common method for generating a single embedding from each chunk is to use mean pooling on the token-level embeddings, where the embeddings of all tokens are averaged.
 
-To split the text, we can use a fixed length, though in some cases, splitting at paragraph or sentence boundaries may better preserve the text's meaning. This approach has been implemented in Langchain via the function `RecursiveCharacterTextSplitter` (see this [blog](https://dev.to/eteimz/understanding-langchains-recursivecharactertextsplitter-2846) for more detailed explanations of this function.)
+
+ 
+
+To split the text, we can use a fixed length (you can find an implementation in the [OpenAI CookBook](https://cookbook.openai.com/examples/embedding_long_inputs)), though in some cases, splitting at paragraph or sentence boundaries may better preserve the text's meaning. This approach has been implemented in Langchain via the function `RecursiveCharacterTextSplitter` (see this [blog](https://dev.to/eteimz/understanding-langchains-recursivecharactertextsplitter-2846) for more detailed explanations of this function.)
 
 
 
@@ -98,7 +101,7 @@ As a result,  naive chunking allows encoding the entire sequence without cutting
 
 ### Late chunking 
 
-Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, addresses the contextual issue. Their thecnique  involves first processing the entire document with a transformer-based model to produce embeddings for all tokens in the text. Only after the token-level embeddings are generated, the text is divided into chunks, and mean pooling is applied to each chunk’s tokens to create chunk-level embeddings. This ensures that each chunk embedding is informed by the context of the whole document, not just the local text of the chunk.
+Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, addresses the contextual issue. Their thecnique  involves first encoding the entire document with a long context embedding model to produce embeddings for all tokens in the text (or at least as long as possible). Once the token-level embeddings are generated using the long-context embedding model, the text is divided into chunks, and mean pooling is applied to the tokens in each chunk to create chunk-level embeddings.  This ensures that each chunk embedding is informed by the context of the whole document, not just the local text of the chunk.
 
 
 
@@ -115,7 +118,8 @@ Late chunking, introduced by Jina AI <d-cite key='gunther2024late'></d-cite>, ad
     </div>
 </div>
 
-It is worth noting that effective late chunking depends on embedding models with long-context capabilities a priori. In their example, they use the [jina-embeddings-v2-base-en](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/), which can handle up to 8,192 tokens—roughly the equivalent of ten standard pages of text.
+It is important to note that effective late chunking relies on embedding models with long-context capabilities. In their example, they use [jina-embeddings-v2-base-en](https://jina.ai/news/jina-ai-launches-worlds-first-open-source-8k-text-embedding-rivaling-openai/), which can handle up to 8,192 tokens—roughly the equivalent of ten standard pages of text. Recently, other embeddings have become available, such as [voyage-3](https://blog.voyageai.com/2024/09/18/voyage-3/), which supports up to 32,000 tokens.
+
 
 
 To evaluate the effectiveness of late chunking, they tested several retrieval benchmarks from BeIR. In all cases, late chunking improved scores over the naive approach, particularly for longer documents, where the performance gap between naive and late chunking increased with document length, demonstrating that late chunking becomes more effective as document length grows.
