@@ -58,8 +58,9 @@ _styles: >
 
 ## Why long context is so hard?
 
-Over the last few years, large language models (LLMs) have made significant progress in extending the limits of context length. For example, BERT-based models typically support a context length of 512 tokens, while standard GPT-3 models have evolved to handle 2,048 tokens. GPT-4 offers two variants: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens).  Recently, Gemmi has resealed models with 2 million context windows. However, the increase of context windows always implies an increse of cost, for instance, GPT-4 with 8,,192 tokens cost per token, while it is for the one has 32 k tokens. Furthermore, using models with the largest context window doesnot necessaly implies a boost of  perfomance. I hope This blog will help unveil some of the mytetories of long context and present some techinques available to tackle this question 
+Over the past few years, large language models (LLMs) have made remarkable strides in extending context length limits. For instance, BERT-based models typically support up to 512 tokens, while standard GPT-3 models can handle 2,048 tokens. GPT-4 offers two configurations: one with 8,192 tokens and another with an extended window of 32,768 tokens (32K tokens). Recently, Gemmi announced a 2 million-token context window for Gemini 1.5 Pro. However, using models with the largest context window does not necessarily imply a boost in performance. I hope this blog helps unravel some of the mysteries surrounding long contexts and introduces some new techniques on the market to address this challenge.
 
+ <!---
 Furthermore, many occasion, we need to fine tune a model to do some task, like classification. It becomes impossible of fine tune such models
 
 
@@ -77,6 +78,8 @@ However, many tasks involving LLMs require handling documents that still far exc
 | Llama 2    | 4,096          | 6                        |
 
 *Context Length Comparison (*Assuming 500 words per page.) 
+
+ --->
 
 The limits of context window stems from the limits of transfomer architecture itself. Most current LLMs, such as GPT and LLama, rely on the transformer architecture and its self-attention mechanism. This mechanism compares each token in the input sequence with every other token, resulting in quadratic complexity in both memory usage and computational cost To overcome the limitations imposed by context length, two primary research directions have emerged. The first one seeks to extend the limits of context window. Some research has explored fine-tuning LLMs with longer context inputs (<d-cite key='dubey2024llama'></d-cite>, <d-cite key='tworkowski2024focused'></d-cite>), while others have used position extrapolation or interpolation, building on relative rotary positional embeddings (<d-cite key='su2024roformer'></d-cite>) to extend input lengths beyond the model’s original training limits (<d-cite key='press2021train'></d-cite>, <d-cite key='chen2023extending'></d-cite>).
 
