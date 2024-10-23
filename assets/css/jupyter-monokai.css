@@ -524,7 +524,7 @@ div#notebook {
   background-color: #1e1e1e;
   min-height: 0px;
   box-shadow: none;
-  width: 980px;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   overflow-x: auto; /* Enable horizontal scrolling */
@@ -532,7 +532,7 @@ div#notebook {
 }
 
 div#ipython-main-app.container {
-  width: 980px;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   margin-right: auto;
@@ -541,7 +541,7 @@ div#ipython-main-app.container {
 }
 
 .container {
-  width: 980px;
+  width: 100%;
   margin-right: auto;
   margin-left: auto;
   overflow-x: auto; /* Enable horizontal scrolling */
