@@ -134,9 +134,9 @@ To evaluate the effectiveness of late chunking, they tested several retrieval ta
 
 ## Encoding Long Contexts in Document Classification
 
-Unlike RAG, which relies on retrieving relevant pieces of information, the model needs to be fine-tuned on labeled data for specific classification tasks. In classification, after obtaining embeddings from the chunks, you can add a classifier layer (typically a fully connected layer) on top of the aggregated global embedding and fine-tune the entire model on your classification dataset.
+Unlike RAG, which relies on retrieving relevant pieces of information, classification tasks typically require fine-tuning a large language model (LLM) for the downstream task. In such tasks, a [CLS] token is added at the beginning of the input sequence, and its final embedding, representing the entire sequence, is used for classification by adding a classifier layer on top. Fine-tuning is then used to adjust the weights of a pre-trained transformer model (like BERT) on task-specific labeled data, enabling it to make accurate predictions for that particular task.
 
-If you're working with a BERT-based classification model where the context window is 512 tokens, but your document has more than 5,000 tokens.  what you could do in such case? Several ways are available to handle this:
+An immediate question arises: If you're working with a BERT-based classification model where the context window is limited to 512 tokens, but your document contains more than 5,000 tokens, what can you do in such a case? Several approaches are available to handle this.
 
 
 - **Document Truncation**: The simplest approach involves fine-tuning BERT by truncating long documents to the first 512 tokens (this can be done by setting `truncation=True` in the tokenizer function).
