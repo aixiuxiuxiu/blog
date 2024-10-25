@@ -37,8 +37,7 @@ toc:
       - name: Hierarchical Encoding
       - name: Cognize LongTeXts
 
-# Below is an example of injecting additional post-specific styles.
-# If you use this post as a template, delete this _styles block.
+
 _styles: >
   .fake-img {
     background: #bbb;
@@ -62,7 +61,7 @@ Over the past few years, large language models (LLMs) have made remarkable progr
 
 The limitations of the context window stem from the inherent properties of the transformer architecture itself. Most current LLMs, such as GPT and LLama, rely on the transformer architecture and its self-attention mechanism. This mechanism compares each token in the input sequence with every other token, resulting in a quadratic increase in both memory usage and computational cost as the context length grows. To address the limitations imposed by context length, two main research directions have emerged. The first focuses on training models with larger context windows, aiming to extend these limits. Some research has explored fine-tuning LLMs with longer context inputs (<d-cite key='dubey2024llama'></d-cite>, <d-cite key='tworkowski2024focused'></d-cite>), while others have used position extrapolation or interpolation, building on relative rotary positional embeddings (<d-cite key='su2024roformer'></d-cite>) to extend input lengths beyond the model’s original training limits (<d-cite key='press2021train'></d-cite>, <d-cite key='chen2023extending'></d-cite>).
 
-The second direction focuses on improving encoding techniques. Encoding all the information from a multi-page document into a single embedding vector is difficult, if not impossible. However, even with a model that has a long context window capable of doing so, trying to encode everything from multiple pages into one vector may result in the loss of important information. Particularly for retrieval tasks, if you need to extract specific information within a sentence, a large embedding for multi-page text might not effectively capture it. Alternatively, chunking long texts into smaller segments while maintaining the dependencies between them opens another direction.
+The second approach focuses on improving encoding techniques. Encoding all the information from a multi-page document into a single embedding vector is difficult, if not impossible. Even with a model that has a long context window capable of handling large inputs, encoding everything from multiple pages into one vector may result in the loss of important information. Particularly for retrieval tasks, if you need to extract specific information from a sentence, a large embedding for multi-page text might not effectively capture it. In such cases, chunking long texts into smaller segments while maintaining the dependencies between them offers a more effective approach.
 
 
 
