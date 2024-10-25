@@ -135,7 +135,23 @@ To evaluate the effectiveness of late chunking, they tested several retrieval ta
 
 Unlike RAG, which relies on retrieving relevant pieces of information, classification tasks typically require fine-tuning a LLM for the downstream task. In such tasks, a [CLS] token is added at the beginning of the input sequence, and its final embedding, representing the entire sequence, is used for classification by adding a classifier layer on top. Fine-tuning is then used to adjust the weights of a pre-trained transformer model (like BERT) on task-specific labeled data, enabling it to make accurate predictions for that particular task.
 
-An immediate question then arises: if you're working with a BERT-based classification model where the context window is limited to 512 tokens, but your document contains more than 5,000 tokens, what can you do? Several approaches are available to handle this:
+An immediate question then arises: if you're working with a BERT-based classification model where the context window is limited to 512 tokens, but your document contains more than 5,000 tokens, what can you do? Here, I would like to use the dataset EURLEX-57K (Chalkidis
+et al., 2019) for example, which is a multi-label classification
+dataset based on EU legal documents. In total, there are 4,271 labels available, and some of them do not appear in the training set often or at all, making it a very challenging dataset. About half of the datasets are long
+documents. The average length of document is 
+
+<small>
+
+|  Input(s) | Output(s) / Label(s) |
+|----------|----------------------|
+
+| **Text**: Commission Regulation (EC) No 1156/2001 of 13 June 2001 fixing the export refunds on white sugar and raw sugar exported in its unaltered state. <br> THE COMMISSION OF THE EUROPEAN COMMUNITIES Having regard to the Treaty establishing the European Community, Having regard to Council Regulation (EC) No 2038/1999 of 13 September 1999 on the common organisation of the markets in the sugar sector(1), as amended by Commission Regulation (EC) No 1527/2000(2), and in particular point (a) of the second subparagraph of Article 18(5) thereof, <br> Whereas: (1) Article 18 of Regulation (EC) No 2038/1999 provides that the difference between quotations or prices on the world market for the products listed in Article 1(1)(a) of that Regulation and prices for those products within the Community may be covered by an export refund. (2) Regulation (EC) No 2038/1999 provides that when refunds on white and raw sugar, undenatured and exported in its unaltered state, are being fixed account must be taken of the situation on the Community and world markets in sugar and in particular of the price and cost factors [...] | 28 (Trade Policy) <br> 93 (Beverages and Sugar) <br> 94 (Foodstuff) |
+
+</small>
+
+
+
+Several approaches are available to handle this:
 
 
 - **Document Truncation**: The simplest approach involves fine-tuning BERT by truncating long documents to the first 512 tokens (this can be done by setting `truncation=True` in the tokenizer function).
