@@ -135,10 +135,8 @@ To evaluate the effectiveness of late chunking, they tested several retrieval ta
 
 Unlike RAG, which relies on retrieving relevant pieces of information, classification tasks typically require fine-tuning a LLM for the downstream task. In such tasks, a [CLS] token is added at the beginning of the input sequence, and its final embedding, representing the entire sequence, is used for classification by adding a classifier layer on top. Fine-tuning is then used to adjust the weights of a pre-trained transformer model (like BERT) on task-specific labeled data, enabling it to make accurate predictions for that particular task.
 
-An immediate question then arises: if you're working with a BERT-based classification model where the context window is limited to 512 tokens, but your document contains more than 5,000 tokens, what can you do? Here, I would like to use the dataset EURLEX-57K (Chalkidis
-et al., 2019) for example, which is a multi-label classification
-dataset based on EU legal documents. In total, there are 4,271 labels available, and some of them do not appear in the training set often or at all, making it a very challenging dataset. About half of the datasets are long
-documents. The average length of document is 
+Here, I would like to illustrate using the EURLEX-57K dataset <d-cite key='chalkidis2019large'></d-cite>, a multi-label classification dataset based on EU legal documents. EURLEX-57K includes 57,000 legislative documents from EUR-LEX, with an average length of 727 words. Several techniques are available to bypass BERT’s maximum text length limit and fine-tune BERT for optimal results:
+
 
 | Input(s) | Output(s) / Label(s) |
 |-----------------------|----------|
