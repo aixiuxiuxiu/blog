@@ -140,14 +140,9 @@ et al., 2019) for example, which is a multi-label classification
 dataset based on EU legal documents. In total, there are 4,271 labels available, and some of them do not appear in the training set often or at all, making it a very challenging dataset. About half of the datasets are long
 documents. The average length of document is 
 
-<small>
-
-|  Input(s) | Output(s) / Label(s) |
-|----------|----------------------|
-
-| **Text**: Commission Regulation (EC) No 1156/2001 of 13 June 2001 fixing the export refunds on white sugar and raw sugar exported in its unaltered state. <br> THE COMMISSION OF THE EUROPEAN COMMUNITIES Having regard to the Treaty establishing the European Community, Having regard to Council Regulation (EC) No 2038/1999 of 13 September 1999 on the common organisation of the markets in the sugar sector(1), as amended by Commission Regulation (EC) No 1527/2000(2), and in particular point (a) of the second subparagraph of Article 18(5) thereof, <br> Whereas: (1) Article 18 of Regulation (EC) No 2038/1999 provides that the difference between quotations or prices on the world market for the products listed in Article 1(1)(a) of that Regulation and prices for those products within the Community may be covered by an export refund. (2) Regulation (EC) No 2038/1999 provides that when refunds on white and raw sugar, undenatured and exported in its unaltered state, are being fixed account must be taken of the situation on the Community and world markets in sugar and in particular of the price and cost factors [...] | 28 (Trade Policy) <br> 93 (Beverages and Sugar) <br> 94 (Foodstuff) |
-
-</small>
+| Input(s) | Output(s) / Label(s) |
+|----------|-----------------------|
+| **Text**: <small> Commission Regulation (EC) No 1156/2001 of 13 June 2001 fixing the export refunds on white sugar and raw sugar exported in its unaltered state. <br> THE COMMISSION OF THE EUROPEAN COMMUNITIES Having regard to the Treaty establishing the European Community, Having regard to Council Regulation (EC) No 2038/1999 of 13 September 1999 on the common organisation of the markets in the sugar sector(1), as amended by Commission Regulation (EC) No 1527/2000(2), and in particular point (a) of the second subparagraph of Article 18(5) thereof, <br> Whereas: (1) Article 18 of Regulation (EC) No 2038/1999 provides that the difference between quotations or prices on the world market for the products listed in Article 1(1)(a) of that Regulation and prices for those products within the Community may be covered by an export refund. (2) Regulation (EC) No 2038/1999 provides that when refunds on white and raw sugar, undenatured and exported in its unaltered state, are being fixed account must be taken of the situation on the Community and world markets in sugar and in particular of the price and cost factors [...] </small>| 28 (Trade Policy) <br> 93 (Beverages and Sugar) <br> 94 (Foodstuff) |
 
 
 
