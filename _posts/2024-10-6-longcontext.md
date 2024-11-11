@@ -154,14 +154,15 @@ Several approaches are available to bypass BERT’s maximum text length limit
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        <figure style="width: 60%; margin: 0 auto;">
-            {% include figure.liquid loading="eager" path="assets/img/schema-cls.png" class="img-fluid rounded z-depth-1" %}
+        <figure style="width: 100%; margin: 0;">
+            <div style="width: 80%; margin: 0 auto;">
+                {% include figure.liquid loading="eager" path="assets/img/schema-cls.png" class="img-fluid rounded z-depth-1" %}
+            </div>
             <figcaption class="text-black text-center mt-2" style="color: black; width: 100%;">
-                A high-level illustration of hierarchical Trans- formers. A shared pre-trained RoBERTa is used to en- code each segment, and a two layer transformer blocks is used to capture the interaction between different seg- ments. Finally, contextual segment representations are aggregated into a document representation. from  <d-cite key='park2022efficient'></d-cite> 
+                A high-level illustration of hierarchical Transformers. A shared pre-trained RoBERTa is used to encode each segment, and a two-layer transformer block is used to capture the interaction between different segments. Finally, contextual segment representations are aggregated into a document representation. from <d-cite key='park2022efficient'></d-cite>
             </figcaption>
         </figure>
     </div>
-</div>
 
 However, in this recent paper <d-cite key='park2022efficient'></d-cite>, they evaluate different models and show that more complex models often fail to outperform simple baselines and yield inconsistent performance across datasets.
 
