@@ -150,7 +150,7 @@ Several approaches are available to bypass BERT’s maximum text length limit
 
 
 - **Longformer** <d-cite key='beltagy2020longformer'></d-cite> : It is designed to process longer input sequences using an efficient self-attention mechanism that scales linearly with the input length. Unlike BERT, which can handle up to 512 tokens, Longformer can process up to 4,096 tokens.
-- **Hierarchical Encoding** <d-cite key='pappagari2019hierarchical'></d-cite>: It divides long documents into smaller chunks of 200 tokens and uses a Transformer layer over BERT-based chunk representations (I implemented it under the Github folder).
+- **Hierarchical Encoding** <d-cite key='pappagari2019hierarchical'></d-cite> <d-cite key='chalkidis2021lexglue'></d-cite> <d-cite key='park2022efficient'></d-cite>: It divides long documents into smaller chunks of 200 tokens and uses a Transformer layer over BERT-based chunk representations (I implemented it under the Github folder).
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
@@ -165,7 +165,9 @@ Several approaches are available to bypass BERT’s maximum text length limit
     </div>
 </div>
 
-However, in this recent paper <d-cite key='park2022efficient'></d-cite>, they evaluate different models and show that more complex models often fail to outperform simple baselines and yield inconsistent performance across datasets.
+In the literature, different segmentation methods have been tested, including segmenting based on document structure, as in <d-cite key='chalkidis2021lexglue'></d-cite>, and dividing documents into overlapping segments, as explored in <d-cite key='park2022efficient'></d-cite>. In <d-cite key='park2022efficient'></d-cite>, these two segmentation strategies were compared. The results indicate that overlapping segmentation performs better across both datasets tested, EctHR and MIMIC-III.
 
-As mentioned above, the context limitation arises from the transformer architecture. Some research has focused on developing new architectures, such as the State Space Model (SSM). However, there is still limited understanding of how these models can improve tasks like RAG or classification.
+
+
+As mentioned at the begining, the context limitation arises from the transformer architecture. Some research started on focusing on developing new architectures, such as the State Space Model (SSM). However, there is still limited understanding of how these models can improve tasks like RAG or classification.
 
