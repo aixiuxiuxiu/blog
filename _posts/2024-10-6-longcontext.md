@@ -118,6 +118,8 @@ It is important to note that effective late chunking relies on embedding models 
 
 To evaluate the effectiveness of late chunking, they tested several retrieval tasks from the [BeIR  benchmark](https://github.com/beir-cellar/beir). In all cases, late chunking outperformed the naive approach, particularly for longer documents, where the performance gap between the two methods increased with document length. This demonstrates that late chunking becomes more effective as document length grows.
 
+One last note about late chunking is that it requires an embedding of a large context window in the first place. However, most of these models are not open-sourced, which poses an obstacle for many enterprises that rely on open-source models.
+
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
         <figure style="width: 60%; margin: 0 auto;">
