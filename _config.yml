@@ -132,10 +132,9 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
-
 blog_name: Hi 👋 # blog_name will be displayed in your blog page
 blog_description: |
-<span style="font-size: 14px;">
+  <div style="font-size: 14px;">
   My name is Aixiu. 'AI' is part of my name, which means 'love' (爱 ❤️) in Chinese. Here, I document my learning notes on building robust AI solutions for enterprises.<br>
   <a href="https://www.linkedin.com/in/aixiu-an-129233ba/" target="_blank">
     <img src="https://img.icons8.com/material-outlined/24/000000/linkedin.png" alt="LinkedIn">
@@ -143,7 +142,8 @@ blog_description: |
   <a href="https://github.com/aixiuxiuxiu" target="_blank">
     <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub">
   </a>
-  </span>
+  <div>
+
 
 permalink: "/:year/:title/"
 lsi: false # produce an index for related posts
