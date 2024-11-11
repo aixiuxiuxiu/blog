@@ -135,7 +135,7 @@ To evaluate the effectiveness of late chunking, they tested several retrieval ta
 
 Unlike RAG, which relies on retrieving relevant pieces of information, classification tasks typically require fine-tuning a LLM for the downstream task. In such tasks, a [CLS] token is added at the beginning of the input sequence, and its final embedding, representing the entire sequence, is used for classification by adding a classifier layer on top. Fine-tuning is then used to adjust the weights of a pre-trained transformer model (like BERT) on task-specific labeled data, enabling it to make accurate predictions for that particular task.
 
-Here, I would like to illustrate using the EURLEX-57K dataset <d-cite key='chalkidis2019large'></d-cite>, a multi-label classification dataset based on EU legal documents. EURLEX-57K includes 57,000 legislative documents from EUR-LEX, with an average length of 727 words. 
+A common challenge arises when the input text exceeds the context window of the LLM. To illustrate this, consider the EURLEX-57K dataset, a multi-label classification dataset based on European Union legal documents. The EURLEX-57K dataset contains 57,000 legislative documents, each with an average length of 727 words <d-cite key='chalkidis2019large'></d-cite>. 
 
 
 | Input(s) | Output(s) / Label(s) |
@@ -148,15 +148,12 @@ Several approaches are available to bypass BERT’s maximum text length limit
 
 - **Document Truncation**: The simplest approach involves fine-tuning BERT by truncating long documents to the first 512 tokens (this can be done by setting `truncation=True` in the tokenizer function).
 
-<small><span style="background-color: lightgreen"> Commission Regulation (EC) No 1156/2001 of 13 June 2001 fixing the export refunds on white sugar and raw sugar exported in its unaltered state. <br> THE COMMISSION OF THE EUROPEAN COMMUNITIES Having regard to the Treaty establishing the European Community, Having regard to Council Regulation (EC) No 2038/1999 of 13 September 1999 on the common organisation of the markets in the sugar sector(1), as amended by Commission Regulation (EC) No 1527/2000(2), and in  </span> particular point (a) of the second subparagraph of Article 18(5) thereof, <br> Whereas: (1) Article 18 of Regulation (EC) No 2038/1999 provides that the difference between quotations or prices on the world market for the products listed in Article 1(1)(a) of that Regulation and prices for those products within the Community may be covered by an export refund. (2) Regulation (EC) No 2038/1999 provides that when refunds on white and raw sugar, undenatured and exported in its unaltered state, are being fixed account must be taken of the situation on the Community and world markets in sugar and in particular of the price and cost factors [...]</small>
-
 
 - **Longformer** <d-cite key='beltagy2020longformer'></d-cite> : It is designed to process longer input sequences using an efficient self-attention mechanism that scales linearly with the input length. Unlike BERT, which can handle up to 512 tokens, Longformer can process up to 4,096 tokens.
 - **Hierarchical Encoding** <d-cite key='pappagari2019hierarchical'></d-cite>: It divides long documents into smaller chunks of 200 tokens and uses a Transformer layer over BERT-based chunk representations (I implemented it under the Github folder).
-- **Cognize LongTeXts** <d-cite key='ding2020cogltx'></d-cite>: In this model,  two BERT (or RoBERTa) models are jointly trained to select key sentences from long documents for various tasks including text classification. The underlying idea that a few key sentences are sufficient for a given task has been explored for question answering.
+
 
 However, in this recent paper <d-cite key='park2022efficient'></d-cite>, they evaluate different models and show that more complex models often fail to outperform simple baselines and yield inconsistent performance across datasets.
 
 As mentioned above, the context limitation arises from the transformer architecture. Some research has focused on developing new architectures, such as the State Space Model (SSM). However, there is still limited understanding of how these models can improve tasks like RAG or classification.
 
-#### Acknowledgment
