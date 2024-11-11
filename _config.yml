@@ -132,8 +132,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
-blog_name: |
-  <div style="font-size: 32px;"> Hi 👋  <div>  
+blog_name:  Hi 👋  
 blog_description: |
   <div style="font-size: 28px;">
   My name is Aixiu. 'AI' is part of my name, which means 'love' (爱 ❤️) in Chinese. Here, I document my learning notes on building robust AI solutions for enterprises.<br>
