@@ -1,10 +1,10 @@
 ---
 layout: distill
 title: How to Encode Long Text Using Large Language Models? 
-description: This blog explores methods for encoding long contexts using large language models, focusing on techniques for Retrieval-Augmented Generation (RAG) and document classification.
+description: This blog explores methods for encoding long contexts using large language models, focusing on techniques for RAG and long document classification.
 tags: RAG Classification
 #giscus_comments: true
-date: 2024-10-18
+date: 2024-11-11
 featured: false
 anthor: Aixiu An
 
