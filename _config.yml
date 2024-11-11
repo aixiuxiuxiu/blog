@@ -133,7 +133,7 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 # Blog
 # -----------------------------------------------------------------------------
 blog_name: |
-  <small>  Hi 👋  </small>
+  <smaller>  Hi 👋  </smaller>
 blog_description: |
   <span style="font-size:  0.8em; font-weight: normal;">My name is Aixiu. 'AI' is part of my name, which means 'love' (爱 ❤️) in Chinese. Here, I document my learning notes on building robust AI solutions for enterprises.<br> </span>
   <a href="https://www.linkedin.com/in/aixiu-an-129233ba/" target="_blank">
