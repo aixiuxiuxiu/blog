@@ -118,12 +118,12 @@ It is important to note that effective late chunking relies on embedding models 
 
 To evaluate the effectiveness of late chunking, they tested several retrieval tasks from the [BeIR  benchmark](https://github.com/beir-cellar/beir). In all cases, late chunking outperformed the naive approach, particularly for longer documents, where the performance gap between the two methods increased with document length. This demonstrates that late chunking becomes more effective as document length grows.
 
-
-
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
-        <figure style="width: 60%; margin: 0 auto;">
-            {% include figure.liquid loading="eager" path="assets/img/jina_length.png" class="img-fluid rounded z-depth-1" %}
+        <figure style="width: 100%; margin: 0;">
+            <div style="width: 70%; margin: 0 auto;">
+                {% include figure.liquid loading="eager" path="assets/img/jina_length.png" class="img-fluid rounded z-depth-1" %}
+            </div>
             <figcaption class="text-black text-center mt-2" style="color: black; width: 100%;">
                 Late chunking's improvement over naive chunking in retrieval tasks is correlated with the avg. document length, from Jina AI 
                 <a href="https://jina.ai/news/late-chunking-in-long-context-embedding-models/">blog</a>
@@ -131,8 +131,10 @@ To evaluate the effectiveness of late chunking, they tested several retrieval ta
         </figure>
     </div>
 </div>
+<br> 
 
-One final note about late chunking is that it requires an embedding of a large context window initially. However, because most of these models are not open-sourced, this still presents a barrier for many enterprises that rely on open-source models in adopting this approach.
+
+One last consideration about late chunking is that it requires an embedding of a large context window initially. However, because most of these models are not open-sourced, this still presents a barrier for many enterprises that rely on open-source models in adopting this approach.
 
 ## Encoding Long Contexts in Document Classification
 
