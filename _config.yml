@@ -135,15 +135,16 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 blog_name:  Hi 👋  
 blog_description: |
   <div>
-  <div style="font-size: 28px;">
+  <span style="font-size: 30px;">
   My name is Aixiu. 'AI' is part of my name, which means 'love' (爱 ❤️) in Chinese. Here, I document my learning notes on building robust AI solutions for enterprises.<br>
-  <div>
+  </span>
   <a href="https://www.linkedin.com/in/aixiu-an-129233ba/" target="_blank">
     <img src="https://img.icons8.com/material-outlined/24/000000/linkedin.png" alt="LinkedIn">
   </a> 
   <a href="https://github.com/aixiuxiuxiu" target="_blank">
     <img src="https://img.icons8.com/material-outlined/24/000000/github.png" alt="GitHub">
   </a>
+  <div>
   
 
 
