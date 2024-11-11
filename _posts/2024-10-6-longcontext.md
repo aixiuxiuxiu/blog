@@ -163,6 +163,7 @@ Several approaches are available to bypass BERT’s maximum text length limit
             </figcaption>
         </figure>
     </div>
+</div>
 
 However, in this recent paper <d-cite key='park2022efficient'></d-cite>, they evaluate different models and show that more complex models often fail to outperform simple baselines and yield inconsistent performance across datasets.
 
