@@ -150,7 +150,7 @@ Several approaches are available to bypass BERT’s maximum text length limit
 
 
 - **Longformer** <d-cite key='beltagy2020longformer'></d-cite> : It is designed to process longer input sequences using an efficient self-attention mechanism that scales linearly with the input length. Unlike BERT, which can handle up to 512 tokens, Longformer can process up to 4,096 tokens.
-- **Hierarchical Encoding** <d-cite key='pappagari2019hierarchical'></d-cite> <d-cite key='chalkidis2021lexglue'></d-cite> <d-cite key='park2022efficient'></d-cite>: A document is first split into segments, each of which should have less than 512 tokens. These segments can be independently encoded using any pre-trained Transformer-based encoders (e.g., RoBERTa in the Figure below). We sum the contextual representation of the first token from each segment up with segment position embeddings as the segment representation. Then the segment encoder—two transformer blocks are used to capture the interaction between segments and out- put a list of contextual segment representations, which are finally aggregated into a document representation, normally using max-pooling.
+- **Hierarchical Encoding** <d-cite key='pappagari2019hierarchical'></d-cite> <d-cite key='chalkidis2021lexglue'></d-cite> <d-cite key='park2022efficient'></d-cite>: A document is first split into segments, each of which should have less than 512 tokens. These segments can be independently encoded using any pre-trained Transformer-based encoders (e.g., RoBERTa in the Figure below). We sum the contextual representation of the first token from each segment up with segment position embeddings as the segment representation. Then the segment encoder—two transformer blocks are used to capture the interaction between segments and out- put a list of contextual segment representations, which are finally aggregated into a document representation, normally using max-pooling. An example of implementation is illustrated in the google colab 
 
 
 <div class="row mt-3">
@@ -160,7 +160,7 @@ Several approaches are available to bypass BERT’s maximum text length limit
                 {% include figure.liquid loading="eager" path="assets/img/schema-cls.png" class="img-fluid rounded z-depth-1" %}
             </div>
             <figcaption class="text-black text-center mt-2" style="color: black; width: 100%;">
-                A high-level illustration of hierarchical Transformers. A shared pre-trained RoBERTa is used to encode each segment, and a two-layer transformer block is used to capture the interaction between different segments. Finally, contextual segment representations are aggregated into a document representation. from <d-cite key='park2022efficient'></d-cite>
+                A high-level illustration of hierarchical Transformers, where a shared pre-trained RoBERTa model encodes each segment, and a two-layer transformer block captures interactions between segments. Finally, contextual segment representations are aggregated into a single document representation. Figure adapted from <d-cite key='park2022efficient'></d-cite>
             </figcaption>
         </figure>
     </div>
