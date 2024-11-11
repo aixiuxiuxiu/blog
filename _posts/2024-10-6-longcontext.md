@@ -150,7 +150,8 @@ Several approaches are available to bypass BERT’s maximum text length limit
 
 
 - **Longformer** <d-cite key='beltagy2020longformer'></d-cite> : It is designed to process longer input sequences using an efficient self-attention mechanism that scales linearly with the input length. Unlike BERT, which can handle up to 512 tokens, Longformer can process up to 4,096 tokens.
-- **Hierarchical Encoding** <d-cite key='pappagari2019hierarchical'></d-cite> <d-cite key='chalkidis2021lexglue'></d-cite> <d-cite key='park2022efficient'></d-cite>: It divides long documents into smaller chunks of 200 tokens and uses a Transformer layer over BERT-based chunk representations (I implemented it under the Github folder).
+- **Hierarchical Encoding** <d-cite key='pappagari2019hierarchical'></d-cite> <d-cite key='chalkidis2021lexglue'></d-cite> <d-cite key='park2022efficient'></d-cite>: A document is first split into segments, each of which should have less than 512 tokens. These segments can be independently encoded using any pre-trained Transformer-based encoders (e.g., RoBERTa in the Figure below). We sum the contextual representation of the first token from each segment up with segment position embeddings as the segment representation. Then the segment encoder—two transformer blocks are used to capture the interaction between segments and out- put a list of contextual segment representations, which are finally aggregated into a document representation, normally using max-pooling.
+
 
 <div class="row mt-3">
     <div class="col-sm mt-3 mt-md-0">
